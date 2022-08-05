@@ -1,4 +1,4 @@
-#Banking System
+# Banking System
 
 ## Preview from Dimazik =)!
 1. This project uses jdk 11, JDBC driver, MySQL, Swing;
