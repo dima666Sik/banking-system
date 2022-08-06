@@ -1,5 +1,7 @@
 package main;
 
+import swing.LoginForm;
+
 /**
  *
  * @author Lazyness or Dimazik
@@ -22,6 +24,6 @@ package main;
 
 public class Main {
     public static void main(String[] args) {
-
+        new LoginForm(null);
     }
 }
