@@ -1,0 +1,87 @@
+@startuml
+
+package "models" #557895 {
+  User o-- Card
+  User o-- Phone
+  Card o-- Money
+  Money o-- Currency
+  Phone o-- Money
+  Group o-- Group
+  Group o-- Utility
+  Utility o-- Gas
+  Utility o-- TV
+  Utility o-- Internet
+  Utility o-- Water
+}
+
+package "system" #715426 {
+      System ..> Group
+      System o-- User
+}
+
+package "iface" #799986 {
+    I_System <|.. System
+}
+
+package "main" #888888{
+      Main --> I_System
+}
+
+interface I_System {
+    +void replenishOnTheCard(BigDecimal replenishAmount)
+    +void replenishOnTheCard(BigDecimal replenishAmount, long rechargeableCard)
+    +void withdrawingMoney(BigDecimal withdrawingAmount)
+    +void replenishPhone(BigDecimal replenishAmount)
+    +void replenishPhone(BigDecimal replenishAmount, long numberPhone)
+    .. we must think about param in this methods..
+    +void utilityBill(BigDecimal replenishAmount)
+    +void takeOutLoan()
+}
+class Main {
+    + {static} void main(String[] args)
+}
+class Card {
+    - long numberCard;
+    - int cardEndDataMonth;
+    - int cardEndDataYear;
+    - int CVC2;
+    - Money money;
+}
+
+class Group {
+    - ArrayList<Group> groupArrayList;
+    - ArrayList<Utility> utilityArrayList;
+}
+
+class Money {
+    - BigDecimal amount;
+    - Currency currency;
+}
+
+class Phone {
+    - String phoneNumber;
+    - Money moneyOnThePhone;
+}
+
+class User {
+    - String firstName;
+    - String lastName;
+    - int sex;
+    - char[] login;
+    - char[] password;
+    - ArrayList<Card> cardArrayList;
+    - ArrayList<Phone> phoneArrayList;
+    - String role;
+}
+
+class Utility {
+     - Gas gas;
+     - TV tv;
+     - Internet internet;
+     - Water water;
+}
+
+class System{
+User user
+}
+@enduml

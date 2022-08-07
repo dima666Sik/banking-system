@@ -13,7 +13,6 @@
 <br>:x:Menu acts;
 <br>:x:Replenishment of the account on the card;
 <br>:x:Withdrawing money from the card;
-<br>:x:Create notes;
 <br>:x:Opportunity to take out a loan;
 <br>:x:Money transfer;
 <br>:x:Replenishment of mobile;
