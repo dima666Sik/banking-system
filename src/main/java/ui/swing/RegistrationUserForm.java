@@ -1,8 +1,5 @@
 package ui.swing;
 
-import domain.iface.I_System;
-import domain.system.System;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,7 +28,7 @@ public class RegistrationUserForm extends JDialog{
 
         signInButton.addActionListener(e -> {
             dispose();
-            new LoginForm();
+            new AuthorizationForm();
         });
 
         registrationButton.addActionListener(e -> {

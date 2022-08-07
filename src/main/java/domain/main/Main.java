@@ -1,6 +1,7 @@
 package domain.main;
 
-import ui.swing.RegistrationUserForm;
+import ui.swing.AuthorizationForm;
+
 /**
  *
  * @author Lazyness or Dimazik
@@ -23,6 +24,6 @@ import ui.swing.RegistrationUserForm;
 
 public class Main {
     public static void main(String[] args) {
-        new RegistrationUserForm();
+        new AuthorizationForm();
     }
 }
