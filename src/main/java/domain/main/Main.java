@@ -1,7 +1,6 @@
 package domain.main;
 
 import ui.swing.RegistrationUserForm;
-
 /**
  *
  * @author Lazyness or Dimazik
