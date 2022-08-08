@@ -1,21 +1,18 @@
 package domain.models;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import domain.system.Generator;
 
-public class User {
+import java.util.*;
+
+public class User extends Account {
     private String firstName;
     private String lastName;
     /**
      * @value is 1 if sex is male else 0
-     * */
+     */
     private int sex;
-    private char[] login;
-    private char[] password;
     private ArrayList<Card> cardArrayList;
-    private ArrayList<Phone> phoneArrayList;
-    private String role;
+    private Phone phone;
 
     public String getFirstName() {
         return firstName;
@@ -29,35 +26,26 @@ public class User {
         return sex;
     }
 
-    public char[] getLogin() {
-        return login;
-    }
-
-    public char[] getPassword() {
-        return password;
-    }
-
     public ArrayList<Card> getCardArrayList() {
         return cardArrayList;
     }
 
-    public ArrayList<Phone> getPhoneArrayList() {
-        return phoneArrayList;
+    public void setCardArrayList(String card) {
+        cardArrayList.add(new Card(Generator.generateNumberCard(),
+                Generator.generateCardEndDataMonth(),
+                Generator.generateCardEndDataYear(),
+                Generator.generateCVC2(),
+                phone.getMoneyOnThePhone())
+        );
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public User(String firstName, String lastName, int sex, char[] login, char[] password, ArrayList<Card> cardArrayList, ArrayList<Phone> phoneArrayList, String role) {
+    public User(char[] login, char[] password, String firstName, String lastName, int sex, Phone phone) {
+        super(login, password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
-        this.login = login;
-        this.password = password;
-        this.cardArrayList = cardArrayList;
-        this.phoneArrayList = phoneArrayList;
-        this.role = role;
+        this.phone = phone;
+        cardArrayList = new ArrayList<>();
     }
 
     @Override
@@ -65,14 +53,15 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return sex == user.sex && firstName.equals(user.firstName) && lastName.equals(user.lastName) && Arrays.equals(login, user.login) && Arrays.equals(password, user.password);
+        return sex == user.sex && firstName.equals(user.firstName) && lastName.equals(user.lastName) && phone.equals(user.phone) && Arrays.equals(super.getLogin(), user.getLogin()) && Arrays.equals(super.getPassword(), user.getPassword());
+
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(firstName, lastName, sex);
-        result = 31 * result + Arrays.hashCode(login);
-        result = 31 * result + Arrays.hashCode(password);
+        int result = Objects.hash(firstName, lastName, sex, cardArrayList, phone);
+        result = 31 * result + Arrays.hashCode(super.getLogin());
+        result = 31 * result + Arrays.hashCode(super.getPassword());
         return result;
     }
 
@@ -82,10 +71,10 @@ public class User {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex=" + sex +
-                ", login=" + Arrays.toString(login) +
-                ", password=" + Arrays.toString(password) +
+                ", login=" + Arrays.toString(super.getLogin()) +
+                ", password=" + Arrays.toString(super.getPassword()) +
                 ", cardArrayList=" + cardArrayList +
-                ", role='" + role + '\'' +
+                ", phone=" + phone +
                 '}';
     }
 }
