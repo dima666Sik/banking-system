@@ -12,7 +12,6 @@ public class System implements I_System {
         this.user = user;
     }
 
-
     @Override
     public void replenishOnTheCard(BigDecimal replenishAmount) {
 
