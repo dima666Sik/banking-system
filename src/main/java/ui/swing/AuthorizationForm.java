@@ -1,13 +1,12 @@
 package ui.swing;
 
-import dao.exceptions.DAOException;
+
 import domain.iface.I_System;
 import domain.models.Account;
 import domain.system.SystemImpl;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLException;
 
 public class AuthorizationForm extends JDialog {
     private JFrame jFrameOld;
@@ -30,13 +29,8 @@ public class AuthorizationForm extends JDialog {
         authorizationButton.addActionListener(e -> {
 //            dispose();
             I_System i_system = new SystemImpl();
-            try {
-                i_system.authorization(new Account(loginField.getText().toCharArray(), passwordField.getPassword()));
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (DAOException daoException) {
-                daoException.printStackTrace();
-            }
+            i_system.authorization(new Account(loginField.getText().toCharArray(), passwordField.getPassword()));
+
         });
         registrationButton.addActionListener(e -> {
             dispose();

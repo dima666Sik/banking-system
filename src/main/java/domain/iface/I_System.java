@@ -26,5 +26,5 @@ public interface I_System {
     /** registration user in system */
     void registration();
     /** authorization user in system */
-    User authorization(Account account) throws SQLException, DAOException;
+    User authorization(Account account);
 }

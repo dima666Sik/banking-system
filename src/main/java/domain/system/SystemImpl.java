@@ -63,49 +63,13 @@ public class SystemImpl implements I_System {
     }
 
     @Override
-    public User authorization(Account account) throws SQLException, DAOException {
-
-        System.out.println(account.getLogin());
-        System.out.println(account.getPassword());
-
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
+    public User authorization(Account account) {
+        userDAO = new SQLUserDAO();
         try {
-            connection = DBConnector.getConnector();
-            try {
-                statement = connection.createStatement();
-                resultSet = statement.executeQuery("SELECT * FROM users");
-                while (resultSet.next()) {
-
-                    String login_user = resultSet.getString(4);
-                    String password_user = resultSet.getString(5);
-                   if(account.getLogin().equals(login_user) && account.getPassword().equals(password_user)){
-                       int id = resultSet.getInt(1);
-                       System.out.println(id);
-                       System.out.println("AUTHORIZATION SUCCESS");
-                       break;
-                   }
-                }
-            } catch (SQLException e) {
-                throw new DAOException("Cannot authorization.", e);
-            } finally {
-                try {
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            user = userDAO.readUser(account);
+        } catch (DAOException e) {
+            e.printStackTrace();
         }
-
-        return null;
+        return user;
     }
-
 }
