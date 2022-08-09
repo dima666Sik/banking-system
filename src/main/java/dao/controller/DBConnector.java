@@ -13,6 +13,7 @@ public class DBConnector {
     public static Connection getConnector() {
         if (connection == null) {
             try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(Environment.DB_URL.getEnvironmentValue(),
                         Environment.USERNAME.getEnvironmentValue(),
                         Environment.PASSWORD.getEnvironmentValue()
@@ -22,6 +23,8 @@ public class DBConnector {
                         "Connect to database not successful!",
                         "Try again",
                         JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }

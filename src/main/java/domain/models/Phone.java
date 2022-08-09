@@ -31,4 +31,12 @@ public class Phone {
     public int hashCode() {
         return Objects.hash(phoneNumber);
     }
+
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", moneyOnThePhone=" + moneyOnThePhone +
+                '}';
+    }
 }

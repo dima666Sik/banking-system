@@ -1,4 +1,4 @@
-package domain.models;
+package domain.models.utility;
 
 public class Utility {
      private Gas gas;

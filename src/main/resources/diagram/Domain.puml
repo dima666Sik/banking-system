@@ -12,6 +12,7 @@ package "models" #557895 {
   Utility o-- TV
   Utility o-- Internet
   Utility o-- Water
+  Account <|-- User
 }
 
 package "system" #715426 {
@@ -23,8 +24,11 @@ package "iface" #799986 {
     I_System <|.. System
 }
 
-package "main" #888888{
-      Main --> I_System
+package "ui" #999999{
+
+    package "main" #498888{
+          Main --> I_System
+    }
 }
 
 interface I_System {
@@ -36,6 +40,8 @@ interface I_System {
     .. we must think about param in this methods..
     +void utilityBill(BigDecimal replenishAmount)
     +void takeOutLoan()
+    +void registration();
+    +void authorization();
 }
 class Main {
     + {static} void main(String[] args)
@@ -70,7 +76,7 @@ class User {
     - char[] login;
     - char[] password;
     - ArrayList<Card> cardArrayList;
-    - ArrayList<Phone> phoneArrayList;
+    - Phone phone;
     - String role;
 }
 
@@ -82,6 +88,11 @@ class Utility {
 }
 
 class System{
-User user
+    User user;
+}
+
+class Account {
+    - char[] login;
+    - char[] password;
 }
 @enduml
