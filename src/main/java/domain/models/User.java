@@ -14,6 +14,10 @@ public class User extends Account {
     private ArrayList<Card> cardArrayList;
     private Phone phone;
 
+    public Phone getPhone() {
+        return phone;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -53,16 +57,13 @@ public class User extends Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return sex == user.sex && firstName.equals(user.firstName) && lastName.equals(user.lastName) && phone.equals(user.phone) && Arrays.equals(super.getLogin(), user.getLogin()) && Arrays.equals(super.getPassword(), user.getPassword());
+        return sex == user.sex && firstName.equals(user.firstName) && lastName.equals(user.lastName) && phone.equals(user.phone) && super.getLogin().equals(user.getLogin()) && super.getPassword().equals(user.getPassword());
 
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(firstName, lastName, sex, cardArrayList, phone);
-        result = 31 * result + Arrays.hashCode(super.getLogin());
-        result = 31 * result + Arrays.hashCode(super.getPassword());
-        return result;
+        return Objects.hash(firstName, lastName, sex, phone);
     }
 
     @Override
@@ -71,8 +72,6 @@ public class User extends Account {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex=" + sex +
-                ", login=" + Arrays.toString(super.getLogin()) +
-                ", password=" + Arrays.toString(super.getPassword()) +
                 ", cardArrayList=" + cardArrayList +
                 ", phone=" + phone +
                 '}';

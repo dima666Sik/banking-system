@@ -1,27 +1,36 @@
 package domain.models;
 
-public class Account {
-    private char[] login;
-    private char[] password;
+import domain.exceptions.DomainException;
+import domain.system.Encryption;
 
-    public Account(char[] login, char[] password) {
-        this.login = login;
-        this.password = password;
+import java.security.NoSuchAlgorithmException;
+
+public class Account {
+    private String login;
+    private String password;
+
+    public Account(char[] login, char[] password){
+        try {
+            this.login = new String(Encryption.encryptionSHA256(login));
+            this.password = new String(Encryption.encryptionSHA256(password));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
-    public char[] getLogin() {
+    public String getLogin() {
         return login;
     }
 
-    public char[] getPassword() {
-        return password;
-    }
-
-    public void setLogin(char[] login) {
+    public void setLogin(String login) {
         this.login = login;
     }
 
-    public void setPassword(char[] password) {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 }

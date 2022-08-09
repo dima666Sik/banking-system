@@ -1,7 +1,8 @@
 package domain.system;
 
+import dao.exceptions.DAOException;
 import dao.iface.UserDAO;
-import dao.sql.query.SQLUserDAO;
+import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
 import domain.models.Account;
 import domain.models.User;
@@ -48,7 +49,11 @@ public class SystemImpl implements I_System {
     public void registration() {
         System.out.println(user);
         userDAO = new SQLUserDAO();
-        userDAO.createUser();
+        try {
+            userDAO.createUser(user);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
