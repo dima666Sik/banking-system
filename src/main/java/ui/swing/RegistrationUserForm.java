@@ -1,13 +1,20 @@
 package ui.swing;
 
+import domain.iface.I_System;
+import domain.models.Money;
+import domain.models.Phone;
+import domain.models.User;
+import domain.system.SystemImpl;
+
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.Locale;
 
-public class RegistrationUserForm extends JDialog{
-    private JFrame jParentFrame;
+public class RegistrationUserForm extends JDialog {
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
-    private JTextField textFieldSex;
     private JTextField textFieldLogin;
     private JPasswordField passwordFieldPassword;
     private JButton registrationButton;
@@ -15,13 +22,14 @@ public class RegistrationUserForm extends JDialog{
     private JButton signInButton;
     private JPanel panelRegistration;
     private JTextField textFieldPhone;
+    private JComboBox comboBoxSex;
 
     public RegistrationUserForm() {
         setUndecorated(true);
         setContentPane(panelRegistration);
         setMinimumSize(new Dimension(480, 380));
         setModal(true);
-        setLocationRelativeTo(jParentFrame);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         cancelButton.addActionListener(e -> dispose());
@@ -39,5 +47,34 @@ public class RegistrationUserForm extends JDialog{
     }
 
     private void registrationUser() {
+//        dispose();
+        if (!textFieldFirstName.getText().isEmpty() &&
+                !textFieldLastName.getText().isEmpty() &&
+                !textFieldLogin.getText().isEmpty() &&
+                !textFieldPhone.getText().isEmpty() &&
+                passwordFieldPassword.getPassword().length != 0) {
+
+            I_System i_system = new SystemImpl(
+                    new User(textFieldLogin.getText().toCharArray(),
+                            passwordFieldPassword.getPassword(),
+                            textFieldFirstName.getText(),
+                            textFieldLastName.getText(),
+                            comboBoxSex.getSelectedIndex(),
+                            new Phone(textFieldPhone.getText(),
+                                    new Money(new BigDecimal(0),
+                                            Currency.getInstance(Locale.US)
+                                    )
+                            )
+                    ));
+
+            i_system.registration();
+
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Please fill all fields...",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
+
 }
