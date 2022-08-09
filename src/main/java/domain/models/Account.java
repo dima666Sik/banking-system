@@ -10,12 +10,14 @@ public class Account {
     private String password;
 
     public Account(char[] login, char[] password) {
-        try {
-            this.login = new String(Encryption.encryptionSHA256(login));
-            this.password = new String(Encryption.encryptionSHA256(password));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            this.login = new String(Encryption.encryptionSHA256(login));
+//            this.password = new String(Encryption.encryptionSHA256(password));
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+        this.login = String.valueOf(login);
+        this.password = String.valueOf(password);
     }
 
     public String getLogin() {

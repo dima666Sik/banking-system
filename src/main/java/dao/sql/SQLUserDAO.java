@@ -49,30 +49,28 @@ public class SQLUserDAO implements UserDAO {
     public User readUser(Account account) throws DAOException {
         User user = null;
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
         ResultSet resultSet = null;
 
         try {
             connection = DBConnector.getConnector();
             try {
-                statement = connection.createStatement();
+                statement = connection.prepareStatement(QueryUser.selectUser());
+                statement.setString(1, account.getLogin());
+                statement.setString(2, account.getPassword());
+
                 try {
-                    resultSet = statement.executeQuery("SELECT * FROM users");
+                    resultSet = statement.executeQuery();
                     while (resultSet.next()) {
-
-                        String login_user = resultSet.getString(4);
-                        String password_user = resultSet.getString(5);
-                        if (account.getLogin().equals(login_user) && account.getPassword().equals(password_user)) {
-                            int id = resultSet.getInt(1);
-                            String first_name = resultSet.getString(2);
-                            String last_name = resultSet.getString(3);
-                            int sex = resultSet.getInt(6);
-
-                            System.out.println("AUTHORIZATION SUCCESS");
-                            user = new User(login_user.toCharArray(), password_user.toCharArray(), first_name, last_name, sex, null);
-                            break;
-                        }
+//                        int id = resultSet.getInt("id_user");
+                        String first_name = resultSet.getString("first_name");
+                        String last_name = resultSet.getString("last_name");
+                        String login_user = resultSet.getString("login_user");
+                        String password_user = resultSet.getString("password_user");
+                        int sex = resultSet.getInt("sex");
+                        user = new User(login_user.toCharArray(), password_user.toCharArray(), first_name, last_name, sex, null);
                     }
+                    System.out.println(user);
                 } finally {
                     try {
                         resultSet.close();

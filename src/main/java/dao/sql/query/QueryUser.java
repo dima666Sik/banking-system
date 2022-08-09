@@ -22,5 +22,8 @@ public class QueryUser {
         return "insert into users (first_name, last_name, sex, phone) values (?,?,?,?);";
     }
 
+    public  static String selectUser(){
+        return "select * from users where login_user in (?) and password_user in (?);";
+    }
 
 }
