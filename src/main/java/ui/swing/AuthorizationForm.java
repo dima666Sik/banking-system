@@ -1,5 +1,6 @@
 package ui.swing;
 
+
 import domain.iface.I_System;
 import domain.models.Account;
 import domain.system.SystemImpl;
@@ -29,6 +30,7 @@ public class AuthorizationForm extends JDialog {
 //            dispose();
             I_System i_system = new SystemImpl();
             i_system.authorization(new Account(loginField.getText().toCharArray(), passwordField.getPassword()));
+
         });
         registrationButton.addActionListener(e -> {
             dispose();

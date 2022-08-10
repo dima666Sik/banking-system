@@ -4,11 +4,10 @@ import dao.controller.DBConnector;
 import dao.exceptions.DAOException;
 import dao.iface.UserDAO;
 import dao.sql.query.QueryUser;
+import domain.models.Account;
 import domain.models.User;
+import java.sql.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class SQLUserDAO implements UserDAO {
 
@@ -17,7 +16,7 @@ public class SQLUserDAO implements UserDAO {
         Connection connection = null;
         PreparedStatement statement = null;
 
-        try{
+        try {
             connection = DBConnector.getConnector();
             try {
                 statement = connection.prepareStatement(QueryUser.createUser());
@@ -32,11 +31,11 @@ public class SQLUserDAO implements UserDAO {
             } finally {
                 try {
                     statement.close();
-                }catch (SQLException e) {
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        }finally {
+        } finally {
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -46,8 +45,54 @@ public class SQLUserDAO implements UserDAO {
     }
 
     @Override
-    public User readUser() {
-        return null;
+    public User readUser(Account account) throws DAOException {
+        User user = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DBConnector.getConnector();
+            try {
+                statement = connection.prepareStatement(QueryUser.selectUser());
+                statement.setString(1, account.getLogin());
+                statement.setString(2, account.getPassword());
+
+                try {
+                    resultSet = statement.executeQuery();
+                    while (resultSet.next()) {
+                        String first_name = resultSet.getString("first_name");
+                        String last_name = resultSet.getString("last_name");
+                        String login_user = resultSet.getString("login_user");
+                        String password_user = resultSet.getString("password_user");
+                        int sex = resultSet.getInt("sex");
+                        user = new User(login_user.toCharArray(), password_user.toCharArray(), first_name, last_name, sex, null);
+                    }
+                    System.out.println(user);
+                } finally {
+                    try {
+                        resultSet.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (SQLException e) {
+                throw new DAOException("Cannot authorization.", e);
+            } finally {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return user;
     }
 
     @Override

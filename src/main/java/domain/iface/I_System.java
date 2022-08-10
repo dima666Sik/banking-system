@@ -1,10 +1,12 @@
 package domain.iface;
 
+import dao.exceptions.DAOException;
 import domain.models.Account;
 import domain.models.User;
 
 import java.math.BigDecimal;
 import java.nio.channels.AcceptPendingException;
+import java.sql.SQLException;
 
 public interface I_System {
     /** replenish yourself a card amount*/

@@ -1,5 +1,6 @@
 package domain.system;
 
+import dao.controller.DBConnector;
 import dao.exceptions.DAOException;
 import dao.iface.PhoneDAO;
 import dao.iface.UserDAO;
@@ -10,6 +11,7 @@ import domain.models.Account;
 import domain.models.User;
 
 import java.math.BigDecimal;
+import java.sql.*;
 
 public class SystemImpl implements I_System {
     User user;
@@ -20,9 +22,13 @@ public class SystemImpl implements I_System {
         this.user = user;
     }
 
+    //<<<<<<< HEAD:src/main/java/domain/system/System.java
+//=======
     public SystemImpl() {
+
     }
 
+    //>>>>>>> e826e169b7db4198e4aefe8be28d1eddd21bd726:src/main/java/domain/system/SystemImpl.java
     @Override
     public void replenishOnTheCard(BigDecimal replenishAmount) {
 
@@ -63,7 +69,12 @@ public class SystemImpl implements I_System {
 
     @Override
     public User authorization(Account account) {
-        return null;
+        userDAO = new SQLUserDAO();
+        try {
+            user = userDAO.readUser(account);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
-
 }
