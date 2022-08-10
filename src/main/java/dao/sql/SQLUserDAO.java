@@ -8,16 +8,14 @@ import domain.models.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SQLUserDAO implements UserDAO {
 
     @Override
-    public User createUser(User user) throws DAOException {
+    public void createUser(User user) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
-        ResultSet resultSet = null;
 
         try{
             connection = DBConnector.getConnector();
@@ -28,6 +26,7 @@ public class SQLUserDAO implements UserDAO {
                 statement.setString(3,user.getLogin());
                 statement.setString(4,user.getPassword());
                 statement.setInt(5,user.getSex());
+                statement.executeUpdate();
             } catch (SQLException e) {
                 throw new DAOException("Cannot create user.", e);
             } finally {
@@ -44,7 +43,6 @@ public class SQLUserDAO implements UserDAO {
                 e.printStackTrace();
             }
         }
-        return null;
     }
 
     @Override

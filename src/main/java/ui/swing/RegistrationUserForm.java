@@ -23,6 +23,7 @@ public class RegistrationUserForm extends JDialog {
     private JPanel panelRegistration;
     private JTextField textFieldPhone;
     private JComboBox comboBoxSex;
+    private static final int DEFAULT_VALUE_MONEY_NEW_USER = 0;
 
     public RegistrationUserForm() {
         setUndecorated(true);
@@ -61,7 +62,7 @@ public class RegistrationUserForm extends JDialog {
                             textFieldLastName.getText(),
                             comboBoxSex.getSelectedIndex(),
                             new Phone(textFieldPhone.getText(),
-                                    new Money(new BigDecimal(0),
+                                    new Money(new BigDecimal(DEFAULT_VALUE_MONEY_NEW_USER),
                                             Currency.getInstance(Locale.US)
                                     )
                             )

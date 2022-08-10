@@ -19,8 +19,7 @@ public class QueryUser {
     }
 
     public static String createUser() {
-        return "insert into users (first_name, last_name, sex, phone) values (?,?,?,?);";
+        return "insert into users (first_name, last_name, login_user, password_user, sex) values (?,?,?,?,?);";
     }
-
 
 }
