@@ -14,4 +14,8 @@ public class QueryPhone {
     public static String createPhone() {
         return "insert into phone (phone_number, id_user) values (?, ?);";
     }
+
+    public static String selectPhone() {
+       return "select * from phone where phone_number in (?);";
+    }
 }

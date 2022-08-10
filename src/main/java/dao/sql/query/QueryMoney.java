@@ -13,6 +13,6 @@ public class QueryMoney {
     }
 
     public static String createMoneyForPhone() {
-        return "insert into money_phone (amount_phone,currency_phone,id_phone) values (?,?,?);";
+        return "insert into money_phone (amount_phone, currency_phone, id_phone) values (?, ?, ?);";
     }
 }

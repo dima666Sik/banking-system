@@ -1,7 +1,6 @@
 package dao.sql;
 
 import dao.controller.DBConnector;
-import dao.exceptions.DAOException;
 import dao.iface.MoneyDAO;
 import dao.sql.query.QueryMoney;
 import domain.models.Money;
@@ -13,32 +12,17 @@ import java.sql.SQLException;
 
 public class SQLMoneyDAO implements MoneyDAO {
     @Override
-    public void createMoney(User user) throws DAOException {
-        Connection connection = null;
-        PreparedStatement statement = null;
-
-        try{
-            connection = DBConnector.getConnector();
-            try {
-                statement = connection.prepareStatement(QueryMoney.createMoneyForPhone());
-                statement.setBigDecimal(1,user.getPhone().getMoneyOnThePhone().getAmount());
-                statement.setString(2, String.valueOf(user.getPhone().getMoneyOnThePhone().getCurrency()));
-                statement.executeUpdate();
-            } catch (SQLException e) {
-                throw new DAOException("Cannot create user.", e);
-            } finally {
-                try {
-                    statement.close();
-                }catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public void createMoney(User user) {
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryMoney.createMoneyForPhone());
+        ) {
+            System.out.println(SQLCheckID.checkIdPhone(user.getPhone()));
+            statement.setBigDecimal(1, user.getPhone().getMoneyOnThePhone().getAmount());
+            statement.setString(2, String.valueOf(user.getPhone().getMoneyOnThePhone().getCurrency()));
+            statement.setInt(3, SQLCheckID.checkIdPhone(user.getPhone()));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

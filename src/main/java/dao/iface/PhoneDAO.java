@@ -1,6 +1,5 @@
 package dao.iface;
 
-import dao.exceptions.DAOException;
 import domain.models.Phone;
 import domain.models.User;
 

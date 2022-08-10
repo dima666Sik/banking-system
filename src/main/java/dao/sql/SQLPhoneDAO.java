@@ -1,17 +1,14 @@
 package dao.sql;
 
 import dao.controller.DBConnector;
-import dao.exceptions.DAOException;
 import dao.iface.PhoneDAO;
 import dao.sql.query.QueryPhone;
 import domain.models.Account;
 import domain.models.Phone;
 import domain.models.User;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class SQLPhoneDAO implements PhoneDAO {
 

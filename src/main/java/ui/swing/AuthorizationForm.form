@@ -70,7 +70,7 @@
             <properties>
               <font name="Lucida Sans Typewriter" size="12" style="1"/>
               <foreground color="-2500135"/>
-              <text value="Authorization:"/>
+              <text value="Login:"/>
               <verifyInputWhenFocusTarget value="true"/>
             </properties>
           </component>

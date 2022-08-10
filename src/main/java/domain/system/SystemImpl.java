@@ -1,34 +1,32 @@
 package domain.system;
 
-import dao.controller.DBConnector;
-import dao.exceptions.DAOException;
+import dao.iface.MoneyDAO;
 import dao.iface.PhoneDAO;
 import dao.iface.UserDAO;
+import dao.sql.SQLMoneyDAO;
 import dao.sql.SQLPhoneDAO;
 import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
 import domain.models.Account;
 import domain.models.User;
 
+import javax.swing.*;
 import java.math.BigDecimal;
-import java.sql.*;
 
 public class SystemImpl implements I_System {
-    User user;
-    UserDAO userDAO;
-    PhoneDAO phoneDAO;
+    private User user;
+    private UserDAO userDAO;
+    private PhoneDAO phoneDAO;
+    private MoneyDAO moneyDAO;
 
     public SystemImpl(User user) {
         this.user = user;
     }
 
-    //<<<<<<< HEAD:src/main/java/domain/system/System.java
-//=======
     public SystemImpl() {
 
     }
 
-    //>>>>>>> e826e169b7db4198e4aefe8be28d1eddd21bd726:src/main/java/domain/system/SystemImpl.java
     @Override
     public void replenishOnTheCard(BigDecimal replenishAmount) {
 
@@ -57,20 +55,29 @@ public class SystemImpl implements I_System {
     @Override
     public void registration() {
         System.out.println(user);
+
         userDAO = new SQLUserDAO();
         phoneDAO = new SQLPhoneDAO();
+        moneyDAO = new SQLMoneyDAO();
+
         userDAO.createUser(user);
         phoneDAO.createPhone(user);
+        moneyDAO.createMoney(user);
+
+        System.out.println("E.N.D.");
     }
 
     @Override
     public User authorization(Account account) {
         userDAO = new SQLUserDAO();
-        try {
-            user = userDAO.readUser(account);
-        } catch (DAOException e) {
-            e.printStackTrace();
+        user = userDAO.readUser(account);
+        if(user!=null) return user;
+        else {
+            JOptionPane.showMessageDialog(null,
+                    "User not defined!",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            return null;
         }
-        return user;
     }
 }

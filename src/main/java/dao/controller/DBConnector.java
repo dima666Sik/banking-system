@@ -19,22 +19,19 @@ public class DBConnector {
     }
 
     public static Connection getConnector() {
-        if (connection == null) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(Environment.DB_URL.getEnvironmentValue(),
-                        prop
-                );
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null,
-                        "Connect to database not successful!",
-                        "Try again",
-                        JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
-            }
-            catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(Environment.DB_URL.getEnvironmentValue(),
+                    prop
+            );
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Connect to database not successful!",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return connection;
     }

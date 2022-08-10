@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AuthorizationForm extends JDialog {
-    private JFrame jFrameOld;
     private JPanel panelSignIn;
     private JTextField loginField;
     private JButton authorizationButton;
@@ -23,11 +22,10 @@ public class AuthorizationForm extends JDialog {
         setMinimumSize(new Dimension(480, 350));
 
         setModal(true);
-        setLocationRelativeTo(jFrameOld);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         closeButton.addActionListener(e -> dispose());
         authorizationButton.addActionListener(e -> {
-//            dispose();
             I_System i_system = new SystemImpl();
             i_system.authorization(new Account(loginField.getText().toCharArray(), passwordField.getPassword()));
 
