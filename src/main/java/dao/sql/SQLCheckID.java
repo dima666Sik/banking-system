@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class SQLCheckID {
 
-    public static int checkIdUser(Account account) throws DAOException {
+    public int checkIdUser(Account account) throws DAOException {
         int id = 0;
         Connection connection = null;
         PreparedStatement statement = null;

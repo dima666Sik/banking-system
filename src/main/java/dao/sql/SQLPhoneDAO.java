@@ -17,6 +17,7 @@ public class SQLPhoneDAO implements PhoneDAO {
 
     @Override
     public void createPhone(User user) throws DAOException {
+        SQLCheckID sqlCheckID = new SQLCheckID();
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -24,7 +25,7 @@ public class SQLPhoneDAO implements PhoneDAO {
             try {
                 statement = connection.prepareStatement(QueryPhone.createPhone());
                 statement.setString(1, user.getPhone().getPhoneNumber());
-                statement.setInt(2, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
+                statement.setInt(2, sqlCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new DAOException("Cannot create phone.", e);

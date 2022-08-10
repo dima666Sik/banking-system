@@ -20,9 +20,7 @@ public class SQLMoneyDAO implements MoneyDAO {
         PreparedStatement statement = null;
 
         try{
-            dbConnector = new DBConnector();
-            connection = dbConnector.getConnector();
-//            connection = DBConnector.getConnector();
+            connection = DBConnector.getConnector();
             try {
                 statement = connection.prepareStatement(QueryMoney.createMoneyForPhone());
                 statement.setBigDecimal(1,user.getPhone().getMoneyOnThePhone().getAmount());
