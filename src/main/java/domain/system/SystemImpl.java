@@ -2,7 +2,9 @@ package domain.system;
 
 import dao.controller.DBConnector;
 import dao.exceptions.DAOException;
+import dao.iface.PhoneDAO;
 import dao.iface.UserDAO;
+import dao.sql.SQLPhoneDAO;
 import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
 import domain.models.Account;
@@ -14,6 +16,7 @@ import java.sql.*;
 public class SystemImpl implements I_System {
     User user;
     UserDAO userDAO;
+    PhoneDAO phoneDAO;
 
     public SystemImpl(User user) {
         this.user = user;
@@ -55,8 +58,10 @@ public class SystemImpl implements I_System {
     public void registration() {
         System.out.println(user);
         userDAO = new SQLUserDAO();
+        phoneDAO = new SQLPhoneDAO();
         try {
             userDAO.createUser(user);
+            phoneDAO.createPhone(user);
         } catch (DAOException e) {
             e.printStackTrace();
         }

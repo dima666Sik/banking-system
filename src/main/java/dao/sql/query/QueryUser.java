@@ -19,11 +19,10 @@ public class QueryUser {
     }
 
     public static String createUser() {
-        return "insert into users (first_name, last_name, sex, phone) values (?,?,?,?);";
+        return "insert into users (first_name, last_name, login_user, password_user, sex) values (?,?,?,?,?);";
     }
 
     public  static String selectUser(){
         return "select * from users where login_user in (?) and password_user in (?);";
     }
-
 }

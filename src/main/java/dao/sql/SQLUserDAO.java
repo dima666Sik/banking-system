@@ -6,26 +6,26 @@ import dao.iface.UserDAO;
 import dao.sql.query.QueryUser;
 import domain.models.Account;
 import domain.models.User;
-
 import java.sql.*;
+
 
 public class SQLUserDAO implements UserDAO {
 
     @Override
-    public User createUser(User user) throws DAOException {
+    public void createUser(User user) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
-        ResultSet resultSet = null;
 
         try {
             connection = DBConnector.getConnector();
             try {
                 statement = connection.prepareStatement(QueryUser.createUser());
-                statement.setString(1, user.getFirstName());
-                statement.setString(2, user.getLastName());
-                statement.setString(3, user.getLogin());
-                statement.setString(4, user.getPassword());
-                statement.setInt(5, user.getSex());
+                statement.setString(1,user.getFirstName());
+                statement.setString(2,user.getLastName());
+                statement.setString(3,user.getLogin());
+                statement.setString(4,user.getPassword());
+                statement.setInt(5,user.getSex());
+                statement.executeUpdate();
             } catch (SQLException e) {
                 throw new DAOException("Cannot create user.", e);
             } finally {
@@ -42,7 +42,6 @@ public class SQLUserDAO implements UserDAO {
                 e.printStackTrace();
             }
         }
-        return null;
     }
 
     @Override
@@ -62,7 +61,6 @@ public class SQLUserDAO implements UserDAO {
                 try {
                     resultSet = statement.executeQuery();
                     while (resultSet.next()) {
-//                        int id = resultSet.getInt("id_user");
                         String first_name = resultSet.getString("first_name");
                         String last_name = resultSet.getString("last_name");
                         String login_user = resultSet.getString("login_user");
