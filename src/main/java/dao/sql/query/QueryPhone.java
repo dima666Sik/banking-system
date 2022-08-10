@@ -12,6 +12,6 @@ public class QueryPhone {
     }
 
     public static String createPhone() {
-        return "insert into phone (phone_number,id_user) values (?,?);";
+        return "insert into phone (phone_number, id_user) values (?, ?);";
     }
 }

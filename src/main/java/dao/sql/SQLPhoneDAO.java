@@ -4,6 +4,7 @@ import dao.controller.DBConnector;
 import dao.exceptions.DAOException;
 import dao.iface.PhoneDAO;
 import dao.sql.query.QueryPhone;
+import domain.models.Account;
 import domain.models.Phone;
 import domain.models.User;
 
@@ -18,33 +19,24 @@ public class SQLPhoneDAO implements PhoneDAO {
     public void createPhone(User user) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try{
+        try {
             connection = DBConnector.getConnector();
             try {
                 statement = connection.prepareStatement(QueryPhone.createPhone());
-                statement.setString(1,user.getPhone().getPhoneNumber());
+                statement.setString(1, user.getPhone().getPhoneNumber());
+                statement.setInt(2, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
                 statement.executeUpdate();
-                try {
-
-
-                }finally {
-                    try {
-                        resultSet.close();
-                    }catch (SQLException e){
-                        e.printStackTrace();
-                    }
-                }
             } catch (SQLException e) {
                 throw new DAOException("Cannot create phone.", e);
-            } finally {
+            }
+            finally {
                 try {
                     statement.close();
-                }catch (SQLException e) {
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        }finally {
+        } finally {
             try {
                 connection.close();
             } catch (SQLException e) {

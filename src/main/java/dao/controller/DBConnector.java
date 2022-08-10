@@ -24,7 +24,8 @@ public class DBConnector {
                         "Try again",
                         JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+            }
+            catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }

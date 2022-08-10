@@ -6,6 +6,7 @@ import dao.iface.UserDAO;
 import dao.sql.query.QueryUser;
 import domain.models.Account;
 import domain.models.User;
+
 import java.sql.*;
 
 
@@ -20,11 +21,11 @@ public class SQLUserDAO implements UserDAO {
             connection = DBConnector.getConnector();
             try {
                 statement = connection.prepareStatement(QueryUser.createUser());
-                statement.setString(1,user.getFirstName());
-                statement.setString(2,user.getLastName());
-                statement.setString(3,user.getLogin());
-                statement.setString(4,user.getPassword());
-                statement.setInt(5,user.getSex());
+                statement.setString(1, user.getFirstName());
+                statement.setString(2, user.getLastName());
+                statement.setString(3, user.getLogin());
+                statement.setString(4, user.getPassword());
+                statement.setInt(5, user.getSex());
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new DAOException("Cannot create user.", e);

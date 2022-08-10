@@ -1,6 +1,5 @@
 package domain.models;
 
-import domain.exceptions.DomainException;
 import domain.system.Encryption;
 
 import java.security.NoSuchAlgorithmException;
@@ -9,15 +8,20 @@ public class Account {
     private String login;
     private String password;
 
+    /** This constructor takes an array of characters and subsequently encrypts the data */
     public Account(char[] login, char[] password) {
-//        try {
-//            this.login = new String(Encryption.encryptionSHA256(login));
-//            this.password = new String(Encryption.encryptionSHA256(password));
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        }
-        this.login = String.valueOf(login);
-        this.password = String.valueOf(password);
+        try {
+            this.login = new String(Encryption.encryptionSHA256(login));
+            this.password = new String(Encryption.encryptionSHA256(password));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /** This constructor takes a String data and assigns them to fields class */
+    public Account(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
     public String getLogin() {

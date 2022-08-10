@@ -15,11 +15,14 @@ import java.sql.SQLException;
 public class SQLMoneyDAO implements MoneyDAO {
     @Override
     public void createMoney(User user) throws DAOException {
+        DBConnector dbConnector = null;
         Connection connection = null;
         PreparedStatement statement = null;
 
         try{
-            connection = DBConnector.getConnector();
+            dbConnector = new DBConnector();
+            connection = dbConnector.getConnector();
+//            connection = DBConnector.getConnector();
             try {
                 statement = connection.prepareStatement(QueryMoney.createMoneyForPhone());
                 statement.setBigDecimal(1,user.getPhone().getMoneyOnThePhone().getAmount());
