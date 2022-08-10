@@ -4,7 +4,6 @@ import dao.controller.DBConnector;
 import dao.exceptions.DAOException;
 import dao.iface.MoneyDAO;
 import dao.sql.query.QueryMoney;
-import dao.sql.query.QueryUser;
 import domain.models.Money;
 import domain.models.User;
 
@@ -15,7 +14,6 @@ import java.sql.SQLException;
 public class SQLMoneyDAO implements MoneyDAO {
     @Override
     public void createMoney(User user) throws DAOException {
-        DBConnector dbConnector = null;
         Connection connection = null;
         PreparedStatement statement = null;
 

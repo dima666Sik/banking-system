@@ -59,12 +59,8 @@ public class SystemImpl implements I_System {
         System.out.println(user);
         userDAO = new SQLUserDAO();
         phoneDAO = new SQLPhoneDAO();
-        try {
-            userDAO.createUser(user);
-            phoneDAO.createPhone(user);
-        } catch (DAOException e) {
-            e.printStackTrace();
-        }
+        userDAO.createUser(user);
+        phoneDAO.createPhone(user);
     }
 
     @Override
