@@ -1,12 +1,11 @@
 package dao.iface;
 
-import dao.exceptions.DAOException;
 import domain.models.Account;
 import domain.models.User;
 
 public interface UserDAO {
-    void createUser(User user) throws DAOException;
-    User readUser(Account account) throws DAOException;
+    void createUser(User user);
+    User readUser(Account account);
     User updateUser();
     void deleteUser();
 }

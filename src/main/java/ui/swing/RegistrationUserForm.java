@@ -48,7 +48,7 @@ public class RegistrationUserForm extends JDialog {
     }
 
     private void registrationUser() {
-//        dispose();
+        dispose();
         if (!textFieldFirstName.getText().isEmpty() &&
                 !textFieldLastName.getText().isEmpty() &&
                 !textFieldLogin.getText().isEmpty() &&
@@ -69,6 +69,7 @@ public class RegistrationUserForm extends JDialog {
                     ));
 
             i_system.registration();
+
 
         } else {
             JOptionPane.showMessageDialog(this,
