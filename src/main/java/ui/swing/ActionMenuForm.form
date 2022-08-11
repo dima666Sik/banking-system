@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ui.swing.ActionMenuForm">
+  <grid id="27dc6" binding="panelActionMenu" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="509" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-11644075"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="9603b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Algerian" size="28" style="0"/>
+          <text value="Action menu with card"/>
+        </properties>
+      </component>
+      <grid id="d5982" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="10" bottom="10" right="10"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-11644075"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="13470" class="javax.swing.JButton" binding="replenishmentOfTheAccountButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16606948"/>
+              <text value="Replenishment of the account on the card"/>
+            </properties>
+          </component>
+          <component id="af59f" class="javax.swing.JButton" binding="withdrawingMoneyFromTheButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16606948"/>
+              <text value="Withdrawing money from the card"/>
+            </properties>
+          </component>
+          <component id="938a4" class="javax.swing.JButton" binding="exitButton" default-binding="true">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-6415342"/>
+              <text value="Exit"/>
+            </properties>
+          </component>
+          <component id="56e57" class="javax.swing.JButton" binding="moneyTransferButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16606948"/>
+              <text value="Money transfer"/>
+            </properties>
+          </component>
+          <component id="42271" class="javax.swing.JButton" binding="opportunityToTakeOutButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16606948"/>
+              <text value="Opportunity to take out a loan"/>
+            </properties>
+          </component>
+          <component id="6ba63" class="javax.swing.JButton" binding="replenishmentOfMobileButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16606948"/>
+              <text value="Replenishment of mobile"/>
+            </properties>
+          </component>
+          <component id="28b17" class="javax.swing.JButton" binding="paymentOfUtilityServiceButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16606948"/>
+              <text value="Payment of utility service"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

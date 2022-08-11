@@ -1,17 +1,11 @@
 package ui.swing;
 
 import domain.iface.I_System;
-import domain.models.Card;
-import domain.models.Money;
 import domain.models.User;
-import domain.system.Generator;
 import domain.system.SystemImpl;
 
 import javax.swing.*;
 import java.awt.*;
-import java.math.BigDecimal;
-import java.util.Currency;
-import java.util.Locale;
 
 public class RegistrationCardForUserForm extends JDialog {
     private final User user;

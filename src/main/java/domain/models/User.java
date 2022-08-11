@@ -28,7 +28,7 @@ public class User extends Account {
                 Generator.generateCardEndDataMonth(),
                 Generator.generateCardEndDataYear(),
                 Generator.generateCVC2(),
-                new Money(new BigDecimal(0), Currency.getInstance(Locale.UK))
+                new Money(new BigDecimal(0), Currency.getInstance(Locale.US))
         );
     }
 
