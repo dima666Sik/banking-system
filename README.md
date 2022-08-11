@@ -10,7 +10,6 @@
 ## Features
 ☑️Sing in;
 <br>☑️Registration;
-<br>:x:Exit from account;
 <br>:x:Menu acts;
 <br>:x:Replenishment of the account on the card;
 <br>:x:Withdrawing money from the card;
