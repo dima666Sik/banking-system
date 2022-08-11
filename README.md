@@ -5,6 +5,7 @@
 2. Folder called "out" stores 2 jar`s files: 1 - use 8 jdk, 2 - use 11 jdk;
 3. Project uses Swing interface;
 4. Project uses db mySql to store information.
+5. We use encryption sh256 for login and password user.
 
 ## Features
 ☑️Sing in;
