@@ -3,7 +3,6 @@ package dao.sql;
 import dao.controller.DBConnector;
 import dao.iface.CardsDAO;
 import dao.sql.query.QueryCards;
-import dao.sql.query.QueryPhone;
 import domain.models.Account;
 import domain.models.Card;
 import domain.models.User;

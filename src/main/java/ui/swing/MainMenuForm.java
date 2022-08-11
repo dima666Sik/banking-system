@@ -1,9 +1,5 @@
 package ui.swing;
 
-import domain.iface.I_System;
-import domain.models.Account;
-import domain.system.SystemImpl;
-
 import javax.swing.*;
 import java.awt.*;
 

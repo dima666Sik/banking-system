@@ -1,8 +1,6 @@
 package ui.main;
 
-import ui.swing.AuthorizationForm;
 import ui.swing.MainMenuForm;
-import ui.swing.RegistrationUserForm;
 
 /**
  * @author Lazyness or Dimazik
@@ -11,7 +9,6 @@ import ui.swing.RegistrationUserForm;
  * In the Banking System we must realise:
  * ❌ Sing in;
  * ❌ Registration;
- * ❌ Exit from account;
  * ❌ Menu acts;
  * ❌ Replenishment of the account on the card;
  * ❌ Withdrawing money from the card;

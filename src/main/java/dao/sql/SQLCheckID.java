@@ -1,7 +1,6 @@
 package dao.sql;
 
 import dao.controller.DBConnector;
-import dao.exceptions.DAOException;
 import dao.sql.query.QueryCards;
 import dao.sql.query.QueryPhone;
 import dao.sql.query.QueryUser;

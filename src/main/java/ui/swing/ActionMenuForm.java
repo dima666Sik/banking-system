@@ -50,6 +50,5 @@ public class ActionMenuForm extends JDialog{
 
     private void replenishmentOfTheAccount() {
         I_System i_system = new SystemImpl();
-
     }
 }
