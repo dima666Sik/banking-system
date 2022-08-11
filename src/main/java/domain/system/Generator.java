@@ -13,12 +13,13 @@ public class Generator {
         return Card.FIRST_NUMBER_PAYMENT_SYSTEM_MASTER_CARD + bankIdentifier + cardID + checkDigit;
     }
 
-    public static int generateCardEndDataMonth() {
-        return Calendar.getInstance().get(Calendar.MONTH) + 1;
+    public static String generateCardEndDataMonth() {
+        int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        return currentMonth>9?String.valueOf(currentMonth):"0"+currentMonth;
     }
 
-    public static int generateCardEndDataYear() {
-        return Calendar.getInstance().get(Calendar.YEAR);
+    public static String generateCardEndDataYear() {
+        return String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
     }
 
     /**

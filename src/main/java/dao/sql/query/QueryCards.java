@@ -17,4 +17,8 @@ public class QueryCards {
     public static String createCards() {
         return "insert into cards (number_card,card_end_data_month,card_end_data_year,cvc2,id_user) values (?,?,?,?,?);";
     }
+
+    public static String selectCard() {
+        return "select * from cards where number_card in (?);";
+    }
 }

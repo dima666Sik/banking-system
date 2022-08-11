@@ -9,6 +9,7 @@ import domain.system.SystemImpl;
 import javax.swing.*;
 import java.awt.*;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Currency;
 import java.util.Locale;
 
@@ -16,19 +17,20 @@ public class RegistrationUserForm extends JDialog {
     private JTextField textFieldFirstName;
     private JTextField textFieldLastName;
     private JTextField textFieldLogin;
-    private JPasswordField passwordFieldPassword;
+    private JPasswordField passwordField;
     private JButton registrationButton;
     private JButton cancelButton;
     private JButton signInButton;
     private JPanel panelRegistration;
     private JTextField textFieldPhone;
     private JComboBox comboBoxSex;
+    private JPasswordField passwordConfirmField;
     private static final int DEFAULT_VALUE_MONEY_NEW_USER = 0;
 
     public RegistrationUserForm() {
         setUndecorated(true);
         setContentPane(panelRegistration);
-        setMinimumSize(new Dimension(480, 380));
+        setMinimumSize(new Dimension(480, 420));
         setModal(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -48,16 +50,18 @@ public class RegistrationUserForm extends JDialog {
     }
 
     private void registrationUser() {
-        dispose();
         if (!textFieldFirstName.getText().isEmpty() &&
                 !textFieldLastName.getText().isEmpty() &&
                 !textFieldLogin.getText().isEmpty() &&
                 !textFieldPhone.getText().isEmpty() &&
-                passwordFieldPassword.getPassword().length != 0) {
-
-            I_System i_system = new SystemImpl(
-                    new User(textFieldLogin.getText().toCharArray(),
-                            passwordFieldPassword.getPassword(),
+                passwordField.getPassword().length != 0 &&
+                passwordConfirmField.getPassword().length != 0
+        ) {
+            if (Arrays.equals(passwordField.getPassword(), passwordConfirmField.getPassword())) {
+                if (passwordField.getPassword().length >= 6) {
+                    dispose();
+                    User user = new User(textFieldLogin.getText().toCharArray(),
+                            passwordField.getPassword(),
                             textFieldFirstName.getText(),
                             textFieldLastName.getText(),
                             comboBoxSex.getSelectedIndex(),
@@ -66,10 +70,25 @@ public class RegistrationUserForm extends JDialog {
                                             Currency.getInstance(Locale.US)
                                     )
                             )
-                    ));
+                    );
 
-            i_system.registration();
+                    I_System i_system = new SystemImpl(user);
 
+                    i_system.registration();
+                    new RegistrationCardForUserForm(user);
+                }
+                else{
+                    JOptionPane.showMessageDialog(this,
+                            "Password less 6 symbols.",
+                            "Try again",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Fields 'password' and 'confirm password' is not equals...",
+                        "Try again",
+                        JOptionPane.ERROR_MESSAGE);
+            }
 
         } else {
             JOptionPane.showMessageDialog(this,

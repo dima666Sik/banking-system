@@ -2,6 +2,7 @@ package domain.models;
 
 import domain.system.Generator;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class User extends Account {
@@ -11,8 +12,25 @@ public class User extends Account {
      * @value is 1 if sex is male else 0
      */
     private int sex;
-    private ArrayList<Card> cardArrayList;
+    /**
+     * get index 0 -> number card, index 1 -> end month, index 2 -> end year, index 3 -> cvc2
+     */
+    private Card card;
     private Phone phone;
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard() {
+        this.card = new Card(
+                Generator.generateNumberCard(),
+                Generator.generateCardEndDataMonth(),
+                Generator.generateCardEndDataYear(),
+                Generator.generateCVC2(),
+                new Money(new BigDecimal(0), Currency.getInstance(Locale.UK))
+        );
+    }
 
     public Phone getPhone() {
         return phone;
@@ -30,26 +48,12 @@ public class User extends Account {
         return sex;
     }
 
-    public ArrayList<Card> getCardArrayList() {
-        return cardArrayList;
-    }
-
-    public void setCardArrayList(String card) {
-        cardArrayList.add(new Card(Generator.generateNumberCard(),
-                Generator.generateCardEndDataMonth(),
-                Generator.generateCardEndDataYear(),
-                Generator.generateCVC2(),
-                phone.getMoneyOnThePhone())
-        );
-    }
-
     public User(char[] login, char[] password, String firstName, String lastName, int sex, Phone phone) {
         super(login, password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
         this.phone = phone;
-        cardArrayList = new ArrayList<>();
     }
 
     @Override
@@ -72,7 +76,7 @@ public class User extends Account {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex=" + sex +
-                ", cardArrayList=" + cardArrayList +
+                ", card=" + card +
                 ", phone=" + phone +
                 '}';
     }

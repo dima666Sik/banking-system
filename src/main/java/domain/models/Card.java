@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Card {
     public static char FIRST_NUMBER_PAYMENT_SYSTEM_MASTER_CARD = '5';
     private final String numberCard;
-    private final int cardEndDataMonth;
-    private final int cardEndDataYear;
+    private final String cardEndDataMonth;
+    private final String cardEndDataYear;
     private final String CVC2;
     private final Money money;
 
@@ -14,11 +14,11 @@ public class Card {
         return numberCard;
     }
 
-    public int getCardEndDataMonth() {
+    public String getCardEndDataMonth() {
         return cardEndDataMonth;
     }
 
-    public int getCardEndDataYear() {
+    public String getCardEndDataYear() {
         return cardEndDataYear;
     }
 
@@ -30,7 +30,7 @@ public class Card {
         return money;
     }
 
-    public Card(String numberCard, int cardEndDataMonth, int cardEndDataYear, String CVC2, Money money) {
+    public Card(String numberCard, String cardEndDataMonth, String cardEndDataYear, String CVC2, Money money) {
         this.numberCard = numberCard;
         this.cardEndDataMonth = cardEndDataMonth;
         this.cardEndDataYear = cardEndDataYear;
@@ -55,9 +55,9 @@ public class Card {
     public String toString() {
         return "Card{" +
                 "numberCard='" + numberCard + '\'' +
-                ", cardEndDataMonth=" + cardEndDataMonth +
-                ", cardEndDataYear=" + cardEndDataYear +
-                ", CVC2=" + CVC2 +
+                ", cardEndDataMonth='" + cardEndDataMonth + '\'' +
+                ", cardEndDataYear='" + cardEndDataYear + '\'' +
+                ", CVC2='" + CVC2 + '\'' +
                 ", money=" + money +
                 '}';
     }

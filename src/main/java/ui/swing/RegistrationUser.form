@@ -3,25 +3,14 @@
   <grid id="27dc6" binding="panelRegistration" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="508" height="443"/>
+      <xy x="20" y="20" width="508" height="480"/>
     </constraints>
     <properties>
       <background color="-12631484"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="4dfb" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Edwardian Script ITC" size="72" style="1"/>
-          <foreground color="-2171170"/>
-          <icon value="images/registration.png"/>
-          <text value="Registration"/>
-        </properties>
-      </component>
-      <grid id="9e9e3" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="9e9e3" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="20" left="80" bottom="20" right="80"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -36,8 +25,8 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="First name: "/>
             </properties>
           </component>
@@ -46,8 +35,8 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Last name:"/>
             </properties>
           </component>
@@ -59,8 +48,8 @@
             </constraints>
             <properties>
               <background color="-10393752"/>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
             </properties>
           </component>
           <component id="d3ce" class="javax.swing.JTextField" binding="textFieldLastName">
@@ -71,7 +60,8 @@
             </constraints>
             <properties>
               <background color="-10393752"/>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
             </properties>
           </component>
           <component id="102ba" class="javax.swing.JLabel">
@@ -79,8 +69,8 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Sex:"/>
             </properties>
           </component>
@@ -89,8 +79,8 @@
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Login:"/>
             </properties>
           </component>
@@ -99,8 +89,8 @@
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Password:"/>
             </properties>
           </component>
@@ -112,11 +102,11 @@
             </constraints>
             <properties>
               <background color="-10393752"/>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
             </properties>
           </component>
-          <component id="f320" class="javax.swing.JPasswordField" binding="passwordFieldPassword">
+          <component id="f320" class="javax.swing.JPasswordField" binding="passwordField">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -125,7 +115,8 @@
             <properties>
               <background color="-10393752"/>
               <echoChar value="*"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
             </properties>
           </component>
           <component id="b1ff" class="javax.swing.JLabel">
@@ -133,8 +124,8 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Phone:"/>
             </properties>
           </component>
@@ -146,7 +137,8 @@
             </constraints>
             <properties>
               <background color="-10393752"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
             </properties>
           </component>
           <component id="e0099" class="javax.swing.JComboBox" binding="comboBoxSex">
@@ -154,10 +146,35 @@
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-11644075"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <model>
                 <item value="female"/>
                 <item value="male"/>
               </model>
+            </properties>
+          </component>
+          <component id="66e47" class="javax.swing.JPasswordField" binding="passwordConfirmField">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-10393752"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
+            </properties>
+          </component>
+          <component id="bea2d" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
+              <text value="Confirm password:"/>
             </properties>
           </component>
         </children>
@@ -178,8 +195,8 @@
             </constraints>
             <properties>
               <background color="-16606948"/>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Registration"/>
             </properties>
           </component>
@@ -189,8 +206,8 @@
             </constraints>
             <properties>
               <background color="-6415342"/>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Cancel"/>
             </properties>
           </component>
@@ -200,8 +217,8 @@
             </constraints>
             <properties>
               <background color="-3431402"/>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="Authorization"/>
             </properties>
           </component>
@@ -210,8 +227,8 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="If you havn't account in our system, -&gt;"/>
             </properties>
           </component>
@@ -220,9 +237,32 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Lucida Sans Typewriter" size="12" style="1"/>
-              <foreground color="-2171170"/>
+              <font name="Baskerville Old Face" size="18" style="0"/>
+              <foreground color="-723724"/>
               <text value="please click this btn and follow this btn "/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="51b7f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="20" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12631484"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="4dfb" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Baskerville Old Face" size="48" style="0"/>
+              <foreground color="-723724"/>
+              <icon value="images/registration.png"/>
+              <text value="Registration"/>
             </properties>
           </component>
         </children>

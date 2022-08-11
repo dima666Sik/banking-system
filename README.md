@@ -2,10 +2,10 @@
 
 ## Preview from Dimazik =)!
 1. This project uses jdk 11, JDBC driver, MySQL, Swing;
-2. Folder called "out" stores 2 jar`s files: 1 - use 8 jdk, 2 - use 11 jdk;
+2. Folder called "out/artifacts" stores 2 jar`s files: 1 - use 8 jdk, 2 - use 11 jdk;
 3. Project uses Swing interface;
 4. Project uses db mySql to store information.
-5. We use encryption sh256 for login and password user.
+5. Project uses encryption sh256 for login and password user.
 
 ## Features
 ☑️Sing in;

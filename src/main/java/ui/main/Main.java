@@ -1,6 +1,7 @@
 package ui.main;
 
 import ui.swing.AuthorizationForm;
+import ui.swing.MainMenuForm;
 import ui.swing.RegistrationUserForm;
 
 /**
@@ -23,6 +24,6 @@ import ui.swing.RegistrationUserForm;
 
 public class Main {
     public static void main(String[] args) {
-        new RegistrationUserForm();
+        new MainMenuForm();
     }
 }

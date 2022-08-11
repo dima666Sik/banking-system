@@ -2,9 +2,11 @@ package dao.sql;
 
 import dao.controller.DBConnector;
 import dao.exceptions.DAOException;
+import dao.sql.query.QueryCards;
 import dao.sql.query.QueryPhone;
 import dao.sql.query.QueryUser;
 import domain.models.Account;
+import domain.models.Card;
 import domain.models.Phone;
 
 import javax.swing.*;
@@ -48,6 +50,27 @@ public class SQLCheckID {
                 }
                 if (id == 0) JOptionPane.showMessageDialog(null,
                         "Phone not found.",
+                        "Try again",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public static int checkIdCard(Card card){
+        int id = 0;
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryCards.selectCard());
+        ) {
+            statement.setString(1, card.getNumberCard());
+            try (ResultSet resultSet = statement.executeQuery();) {
+                while (resultSet.next()) {
+                    id = resultSet.getInt("id_card");
+                }
+                if (id == 0) JOptionPane.showMessageDialog(null,
+                        "Card not found.",
                         "Try again",
                         JOptionPane.ERROR_MESSAGE);
             }

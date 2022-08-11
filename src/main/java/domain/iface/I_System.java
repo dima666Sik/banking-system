@@ -22,6 +22,7 @@ public interface I_System {
 
     /** registration user in system */
     void registration();
+    void registrationCard();
     /** authorization user in system */
     User authorization(Account account);
 }
