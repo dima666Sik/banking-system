@@ -10,7 +10,7 @@
 ## Features
 ☑️Sing in;
 <br>☑️Registration;
-<br>:x:Menu acts;
+<br>☑️Menu acts;
 <br>:x:Replenishment of the account on the card;
 <br>:x:Withdrawing money from the card;
 <br>:x:Opportunity to take out a loan;
