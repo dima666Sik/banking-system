@@ -7,8 +7,8 @@
 4. Project uses db mySql to store information.
 
 ## Features
-:x:Sing in;
-<br>:x:Registration;
+☑️Sing in;
+<br>☑️Registration;
 <br>:x:Exit from account;
 <br>:x:Menu acts;
 <br>:x:Replenishment of the account on the card;
