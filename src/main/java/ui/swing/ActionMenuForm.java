@@ -1,12 +1,13 @@
 package ui.swing;
 
-import domain.iface.I_System;
-import domain.system.SystemImpl;
+import domain.models.User;
+
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ActionMenuForm extends JDialog{
+    private User user;
     private JButton replenishmentOfTheAccountButton;
     private JButton withdrawingMoneyFromTheButton;
     private JButton exitButton;
@@ -16,10 +17,11 @@ public class ActionMenuForm extends JDialog{
     private JButton replenishmentOfMobileButton;
     private JPanel panelActionMenu;
 
-    public ActionMenuForm() {
+    public ActionMenuForm(User user) {
+        this.user = user;
         setUndecorated(true);
         setContentPane(panelActionMenu);
-        setMinimumSize(new Dimension(480, 300));
+        setMinimumSize(new Dimension(520, 300));
 
         setModal(true);
         setLocationRelativeTo(null);
@@ -28,27 +30,45 @@ public class ActionMenuForm extends JDialog{
             replenishmentOfTheAccount();
         });
         withdrawingMoneyFromTheButton.addActionListener(e -> {
-
+            withdrawingMoney();
         });
         opportunityToTakeOutButton.addActionListener(e -> {
-
+            opportunityToTakeOut();
         });
         moneyTransferButton.addActionListener(e -> {
-
+            moneyTransfer();
         });
         replenishmentOfMobileButton.addActionListener(e -> {
-
+            replenishmentOfMobile();
         });
         paymentOfUtilityServiceButton.addActionListener(e -> {
-
+            paymentOfUtilityService();
         });
         exitButton.addActionListener(e -> {
-
+            dispose();
+            new AuthorizationForm();
         });
         setVisible(true);
     }
 
+    private void paymentOfUtilityService() {
+    }
+
+    private void replenishmentOfMobile() {
+    }
+
+    private void moneyTransfer() {
+        dispose();
+        new ReplenishOnTheCardForm(user);
+    }
+
+    private void opportunityToTakeOut() {
+    }
+
+    private void withdrawingMoney() {
+    }
+
     private void replenishmentOfTheAccount() {
-        I_System i_system = new SystemImpl();
+       
     }
 }

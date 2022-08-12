@@ -21,4 +21,8 @@ public class QueryCards {
     public static String selectCard() {
         return "select * from cards where number_card in (?);";
     }
+
+    public static String selectCards() {
+        return "select * from cards where id_user in (?);";
+    }
 }

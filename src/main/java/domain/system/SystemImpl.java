@@ -10,10 +10,12 @@ import dao.sql.SQLPhoneDAO;
 import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
 import domain.models.Account;
+import domain.models.Card;
 import domain.models.User;
 
 import javax.swing.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class SystemImpl implements I_System {
     private User user;
@@ -31,13 +33,20 @@ public class SystemImpl implements I_System {
     }
 
     @Override
-    public void replenishOnTheCard(BigDecimal replenishAmount) {
+    public void replenishOnTheCard(String ownCard, String replenishAmount) {
 
     }
 
     @Override
-    public void replenishOnTheCard(BigDecimal replenishAmount, long rechargeableCard) {
+    public void replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount) {
 
+    }
+
+    @Override
+    public ArrayList<Card> returnListCardsUser() {
+        cardsDAO = new SQLCardsDAO();
+
+        return cardsDAO.readCards(user);
     }
 
     @Override

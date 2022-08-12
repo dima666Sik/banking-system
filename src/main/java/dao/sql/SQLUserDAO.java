@@ -43,7 +43,7 @@ public class SQLUserDAO implements UserDAO {
                     String login_user = resultSet.getString("login_user");
                     String password_user = resultSet.getString("password_user");
                     int sex = resultSet.getInt("sex");
-                    user = new User(login_user.toCharArray(), password_user.toCharArray(), first_name, last_name, sex, null);
+                    user = new User(login_user, password_user, first_name, last_name, sex, null);
                 }
             }
         } catch (SQLException e) {

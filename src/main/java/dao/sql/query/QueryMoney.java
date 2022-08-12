@@ -30,4 +30,8 @@ public class QueryMoney {
     public static String createMoneyForCard() {
         return "insert into money_card (amount_card, currency_card, id_card) values (?, ?, ?);";
     }
+
+    public static String selectMoneyForCard() {
+        return "select * from money_card where id_card in (?);";
+    }
 }

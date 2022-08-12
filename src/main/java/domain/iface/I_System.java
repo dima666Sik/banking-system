@@ -1,15 +1,18 @@
 package domain.iface;
 
 import domain.models.Account;
+import domain.models.Card;
 import domain.models.User;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public interface I_System {
     /** replenish yourself a card amount*/
-    void replenishOnTheCard(BigDecimal replenishAmount);
+    void replenishOnTheCard(String ownCard,String replenishAmount);
     /** replenish somebody a card amount*/
-    void replenishOnTheCard(BigDecimal replenishAmount, long rechargeableCard);
+    void replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount);
+    ArrayList<Card> returnListCardsUser();
     void withdrawingMoney(BigDecimal withdrawingAmount);
     /** replenish yourself a phone amount*/
     void replenishPhone(BigDecimal replenishAmount);

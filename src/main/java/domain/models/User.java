@@ -16,7 +16,26 @@ public class User extends Account {
      * get index 0 -> number card, index 1 -> end month, index 2 -> end year, index 3 -> cvc2
      */
     private Card card;
+
+    private ArrayList<Card> cards;
+
     private Phone phone;
+
+    public User(String login, String password, String firstName, String lastName, int sex, Phone phone) {
+        super(login,password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.phone = phone;
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
+    }
 
     public Card getCard() {
         return card;
