@@ -29,6 +29,7 @@ public class ReplenishOnTheCardForm extends JDialog{
         ArrayList<Card> cards = i_system.returnListCardsUser();
 
         Iterator<Card> iterator = cards.iterator();
+        comboBoxUserCards.addItem("Your choose");
         while (iterator.hasNext()){
             comboBoxUserCards.addItem(iterator.next().getNumberCard());
         }
@@ -50,11 +51,15 @@ public class ReplenishOnTheCardForm extends JDialog{
         comboBoxUserCards.addActionListener(e -> {
             if (comboBoxUserCards.getSelectedItem() != null) {
                 List<Card> cardList = cards.stream().
-                        filter((card) -> card.getNumberCard().equals(comboBoxUserCards.getSelectedItem())).
+                        filter((card) -> (card.getNumberCard().equals(comboBoxUserCards.getSelectedItem())&&!card.getNumberCard().equals("Your choose"))).
                         peek(System.out::println).collect(Collectors.toList());
-                textFieldMoney.setText(String.valueOf(cardList.get(0).getMoney().getAmount()));
-                textFieldCurrency.setText(String.valueOf(cardList.get(0).getMoney().getCurrency()));
-
+                if(cardList.size()!=0) {
+                    textFieldMoney.setText(String.valueOf(cardList.get(0).getMoney().getAmount()));
+                    textFieldCurrency.setText(String.valueOf(cardList.get(0).getMoney().getCurrency()));
+                }else{
+                    textFieldMoney.setText("");
+                    textFieldCurrency.setText("");
+                }
             }
         });
 
