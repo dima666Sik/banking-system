@@ -53,8 +53,8 @@ public class SQLUserDAO implements UserDAO {
                             password_user,
                             first_name,
                             last_name,
-                            sex,
-                            sqlPhoneDAO.readPhone(SQLCheckID.checkIdUser(account)));
+                            sex);
+                            //sqlPhoneDAO.readPhone(SQLCheckID.checkIdUser(account)));
 
                     user.setCards(cardsDAO.readCards(user));
                 }

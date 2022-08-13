@@ -4,19 +4,19 @@ import java.util.Objects;
 
 public class Phone {
     private final String phoneNumber;
-    private final Money moneyOnThePhone;
+    private final Money money;
 
-    public Phone(String phoneNumber, Money moneyOnThePhone) {
+    public Phone(String phoneNumber, Money money) {
         this.phoneNumber = phoneNumber;
-        this.moneyOnThePhone = moneyOnThePhone;
+        this.money = money;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public Money getMoneyOnThePhone() {
-        return moneyOnThePhone;
+    public Money getMoney() {
+        return money;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Phone {
     public String toString() {
         return "Phone{" +
                 "phoneNumber='" + phoneNumber + '\'' +
-                ", moneyOnThePhone=" + moneyOnThePhone +
+                ", moneyOnThePhone=" + money +
                 '}';
     }
 }

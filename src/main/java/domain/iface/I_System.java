@@ -14,8 +14,12 @@ public interface I_System {
     boolean replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount);
     ArrayList<Card> returnListCardsUser();
     void withdrawingMoney(BigDecimal withdrawingAmount);
-    /** replenish yourself a phone amount*/
-    void replenishPhone(BigDecimal replenishAmount);
+    /**
+     * replenish yourself a phone amount
+     *
+     * @return
+     */
+    boolean replenishPhone(String numberCard, String phone, String sum);
     /** replenish somebody a phone amount*/
     void replenishPhone(BigDecimal replenishAmount, long numberPhone);
 

@@ -21,12 +21,12 @@ public class User extends Account {
 
     private Phone phone;
 
-    public User(String login, String password, String firstName, String lastName, int sex, Phone phone) {
+    public User(String login, String password, String firstName, String lastName, int sex) {
         super(login,password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
-        this.phone = phone;
+        //this.phone = phone;
     }
 
     public ArrayList<Card> getCards() {
