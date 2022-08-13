@@ -41,7 +41,7 @@ public class ReplenishOnTheCardForm extends JDialog{
         this.user = user;
         setUndecorated(true);
         setContentPane(panelReplenishmentCard);
-        setMinimumSize(new Dimension(720, 300));
+        setMinimumSize(new Dimension(860, 300));
 
         setModal(true);
         setLocationRelativeTo(null);

@@ -21,7 +21,7 @@ public class ActionMenuForm extends JDialog{
         this.user = user;
         setUndecorated(true);
         setContentPane(panelActionMenu);
-        setMinimumSize(new Dimension(520, 300));
+        setMinimumSize(new Dimension(720, 300));
 
         setModal(true);
         setLocationRelativeTo(null);
