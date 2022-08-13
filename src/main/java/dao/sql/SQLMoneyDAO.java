@@ -18,8 +18,8 @@ public class SQLMoneyDAO implements MoneyDAO {
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryMoney.createMoneyForPhone());
         ) {
-            statement.setBigDecimal(1, user.getPhone().getMoneyOnThePhone().getAmount());
-            statement.setString(2, String.valueOf(user.getPhone().getMoneyOnThePhone().getCurrency()));
+            statement.setBigDecimal(1, user.getPhone().getMoney().getAmount());
+            statement.setString(2, String.valueOf(user.getPhone().getMoney().getCurrency()));
             statement.setInt(3, SQLCheckID.checkIdPhone(user.getPhone()));
             statement.executeUpdate();
         } catch (SQLException e) {

@@ -49,7 +49,6 @@ public class SystemImpl implements I_System {
         if (own != null &&
                 rechargeable != null) {
             BigDecimal resOwnAmount = own.getMoney().getAmount().subtract(replenishAmount);
-            System.out.println(resOwnAmount);
             if (resOwnAmount.compareTo(BigDecimal.ZERO) >= 0) {
                 BigDecimal resRechargeableAmount = rechargeable.getMoney().getAmount().
                         add(replenishAmount);
