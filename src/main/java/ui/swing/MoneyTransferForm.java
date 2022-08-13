@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class ReplenishOnTheCardForm extends JDialog{
+public class MoneyTransferForm extends JDialog {
     private User user;
     private JComboBox comboBoxUserCards;
     private JPanel panelReplenishmentCard;
@@ -25,19 +25,20 @@ public class ReplenishOnTheCardForm extends JDialog{
     private JTextField textFieldMoney;
     private JTextField textFieldCurrency;
 
-    private ArrayList<Card> setComboBoxList(){
+    // update!!!!
+    private ArrayList<Card> setComboBoxList() {
         I_System i_system = new SystemImpl(user);
         ArrayList<Card> cards = i_system.returnListCardsUser();
 
         Iterator<Card> iterator = cards.iterator();
         comboBoxUserCards.addItem("Your choose");
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             comboBoxUserCards.addItem(iterator.next().getNumberCard());
         }
         return cards;
     }
 
-    public ReplenishOnTheCardForm(User user) {
+    public MoneyTransferForm(User user) {
         this.user = user;
         setUndecorated(true);
         setContentPane(panelReplenishmentCard);
@@ -52,12 +53,13 @@ public class ReplenishOnTheCardForm extends JDialog{
         comboBoxUserCards.addActionListener(e -> {
             if (comboBoxUserCards.getSelectedItem() != null) {
                 List<Card> cardList = cards.stream().
-                        filter((card) -> (card.getNumberCard().equals(comboBoxUserCards.getSelectedItem())&&!card.getNumberCard().equals("Your choose"))).
+                        filter((card) -> (card.getNumberCard().equals(comboBoxUserCards.getSelectedItem()) && !card.getNumberCard().
+                                equals("Your choose"))).
                         peek(System.out::println).collect(Collectors.toList());
-                if(cardList.size()!=0) {
+                if (cardList.size() != 0) {
                     textFieldMoney.setText(String.valueOf(cardList.get(0).getMoney().getAmount()));
                     textFieldCurrency.setText(String.valueOf(cardList.get(0).getMoney().getCurrency()));
-                }else{
+                } else {
                     textFieldMoney.setText("");
                     textFieldCurrency.setText("");
                 }
@@ -76,8 +78,8 @@ public class ReplenishOnTheCardForm extends JDialog{
 
     private void replenishment() {
         I_System i_system = new SystemImpl(user);
-        boolean flag = i_system.replenishOnTheCard((String) comboBoxUserCards.getSelectedItem(),textFieldSomebodyCard.getText(),textFieldAmount.getText());
-        if(flag){
+        boolean flag = i_system.replenishOnTheCard((String) comboBoxUserCards.getSelectedItem(), textFieldSomebodyCard.getText(), new BigDecimal(textFieldAmount.getText()));
+        if (flag) {
             dispose();
             new ActionMenuForm(user);
         }

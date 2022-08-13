@@ -17,31 +17,20 @@ public class User extends Account {
      */
     private Card card;
 
-    private ArrayList<Card> cards;
-
     private Phone phone;
 
-    public User(String login, String password, String firstName, String lastName, int sex, Phone phone) {
+    public User(String login, String password, String firstName, String lastName, int sex) {
         super(login,password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
-        this.phone = phone;
-    }
-
-    public ArrayList<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(ArrayList<Card> cards) {
-        this.cards = cards;
     }
 
     public Card getCard() {
         return card;
     }
 
-    public void setGenerateCard() {
+    public void setCard() {
         this.card = new Card(
                 Generator.generateNumberCard(),
                 Generator.generateCardEndDataMonth(),
@@ -99,7 +88,6 @@ public class User extends Account {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex=" + sex +
-                ", cards=" + cards +
                 ", phone=" + phone +
                 '}';
     }

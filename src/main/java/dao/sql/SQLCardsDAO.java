@@ -36,7 +36,7 @@ public class SQLCardsDAO implements CardsDAO {
     }
 
     @Override
-    public Card readCard(String numberCard, User user) {
+    public Card readCard(String numberCard) {
         Card card = null;
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryCards.selectCard());

@@ -2,7 +2,6 @@ package dao.sql;
 
 import dao.controller.DBConnector;
 import dao.iface.PhoneDAO;
-import dao.sql.query.QueryCards;
 import dao.sql.query.QueryMoney;
 import dao.sql.query.QueryPhone;
 import domain.models.*;

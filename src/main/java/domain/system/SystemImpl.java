@@ -38,21 +38,21 @@ public class SystemImpl implements I_System {
     }
 
     @Override
-    public boolean replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount) {
+    public boolean replenishOnTheCard(String ownCard, String rechargeableCard, BigDecimal replenishAmount) {
         boolean flag = false;
         CardsDAO cardsDAO = new SQLCardsDAO();
         MoneyDAO moneyDAO = new SQLMoneyDAO();
 
-        Card own = cardsDAO.readCard(ownCard, user);
-        Card rechargeable = cardsDAO.readCard(rechargeableCard, user);
+        Card own = cardsDAO.readCard(ownCard);
+        Card rechargeable = cardsDAO.readCard(rechargeableCard);
 
         if (own != null &&
                 rechargeable != null) {
-            BigDecimal resOwnAmount = own.getMoney().getAmount().subtract(BigDecimal.valueOf(Double.parseDouble(replenishAmount)));
+            BigDecimal resOwnAmount = own.getMoney().getAmount().subtract(replenishAmount);
             System.out.println(resOwnAmount);
             if (resOwnAmount.compareTo(BigDecimal.ZERO) >= 0) {
                 BigDecimal resRechargeableAmount = rechargeable.getMoney().getAmount().
-                        add(BigDecimal.valueOf(Double.parseDouble(replenishAmount)));
+                        add(replenishAmount);
                 moneyDAO.updateMoney(resOwnAmount, own);
                 moneyDAO.updateMoney(resRechargeableAmount, rechargeable);
                 flag = true;

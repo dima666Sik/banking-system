@@ -16,6 +16,7 @@ public class ActionMenuForm extends JDialog{
     private JButton opportunityToTakeOutButton;
     private JButton replenishmentOfMobileButton;
     private JPanel panelActionMenu;
+    private JButton createNewCardButton;
 
     public ActionMenuForm(User user) {
         this.user = user;
@@ -48,6 +49,9 @@ public class ActionMenuForm extends JDialog{
             dispose();
             new AuthorizationForm();
         });
+        createNewCardButton.addActionListener(e -> {
+
+        });
         setVisible(true);
     }
 
@@ -60,7 +64,7 @@ public class ActionMenuForm extends JDialog{
     private void moneyTransfer() {
         dispose();
         System.out.println(user);
-        new ReplenishOnTheCardForm(user);
+        new MoneyTransferForm(user);
     }
 
     private void opportunityToTakeOut() {
@@ -70,6 +74,8 @@ public class ActionMenuForm extends JDialog{
     }
 
     private void replenishmentOfTheAccount() {
-       
+        dispose();
+        System.out.println(user);
+        new MoneyTransferForm(user);
     }
 }

@@ -33,8 +33,6 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public User readUser(Account account) {
         User user = null;
-        SQLPhoneDAO sqlPhoneDAO = new SQLPhoneDAO();
-        SQLCardsDAO cardsDAO = new SQLCardsDAO();
 
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryUser.selectUser());
@@ -53,10 +51,7 @@ public class SQLUserDAO implements UserDAO {
                             password_user,
                             first_name,
                             last_name,
-                            sex,
-                            sqlPhoneDAO.readPhone(SQLCheckID.checkIdUser(account)));
-
-                    user.setCards(cardsDAO.readCards(user));
+                            sex);
                 }
             }
         } catch (SQLException e) {
