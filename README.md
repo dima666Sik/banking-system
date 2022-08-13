@@ -17,4 +17,8 @@
 <br>:x:Opportunity to take out a loan;
 <br>☑️Money transfer;
 <br>☑️Replenishment of mobile;
-<br>:x:Payment of utility services.
+<br>:x:Payment of utility services;
+<br>:x:Create new card;
+<br>:x:Add addition phone;
+<br>☑️Check amount on the card;
+<br>☑️Check amount on the phone.

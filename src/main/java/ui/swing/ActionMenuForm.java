@@ -5,6 +5,8 @@ import domain.models.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ActionMenuForm extends JDialog{
     private User user;
@@ -17,6 +19,9 @@ public class ActionMenuForm extends JDialog{
     private JButton replenishmentOfMobileButton;
     private JPanel panelActionMenu;
     private JButton createNewCardButton;
+    private JButton checkAmountPhoneButton;
+    private JButton checkAmountCardsButton;
+    private JButton addAdditionPhoneButton;
 
     public ActionMenuForm(User user) {
         this.user = user;
@@ -28,7 +33,7 @@ public class ActionMenuForm extends JDialog{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         replenishmentOfTheAccountButton.addActionListener(e -> {
-            replenishmentOfTheAccount();
+            terminal();
         });
         withdrawingMoneyFromTheButton.addActionListener(e -> {
             withdrawingMoney();
@@ -52,10 +57,38 @@ public class ActionMenuForm extends JDialog{
         createNewCardButton.addActionListener(e -> {
 
         });
+
+        checkAmountCardsButton.addActionListener(e -> {
+            checkAmountCards();
+        });
+
+        checkAmountPhoneButton.addActionListener(e -> {
+           checkAmountPhone();
+        });
+
         setVisible(true);
+        addAdditionPhoneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    private void checkAmountPhone() {
+        dispose();
+        System.out.println(user);
+        new ShowPhoneForm(user);
+    }
+
+    private void checkAmountCards() {
+        dispose();
+        System.out.println(user);
+        new ShowCardForm(user);
     }
 
     private void paymentOfUtilityService() {
+
     }
 
     private void replenishmentOfMobile() {
@@ -76,9 +109,9 @@ public class ActionMenuForm extends JDialog{
     private void withdrawingMoney() {
     }
 
-    private void replenishmentOfTheAccount() {
+    private void terminal() {
         dispose();
         System.out.println(user);
-        new MoneyTransferForm(user);
+        new TerminalForm(user);
     }
 }

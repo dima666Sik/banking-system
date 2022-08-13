@@ -1,11 +1,10 @@
 package ui.swing;
 
-import javax.swing.*;
+import domain.models.User;
 
 public class TerminalForm {
-    private JComboBox comboBox1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JButton backButton;
-    private JButton replenishmentButton;
+    private User user;
+    public TerminalForm(User user) {
+        this.user=user;
+    }
 }

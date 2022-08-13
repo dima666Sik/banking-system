@@ -2,6 +2,7 @@ package dao.sql;
 
 import dao.controller.DBConnector;
 import dao.iface.PhoneDAO;
+import dao.sql.query.QueryCards;
 import dao.sql.query.QueryMoney;
 import dao.sql.query.QueryPhone;
 import domain.models.*;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Currency;
 
 public class SQLPhoneDAO implements PhoneDAO {
@@ -76,5 +78,28 @@ public class SQLPhoneDAO implements PhoneDAO {
     @Override
     public void deletePhone() {
 
+    }
+
+    @Override
+    public ArrayList<Phone> readPhones(User user) {
+        ArrayList<Phone> phones = new ArrayList<>();
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryPhone.selectPhones());
+        ) {
+            statement.setInt(1, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    int idPhone = resultSet.getInt("id_phone");
+                    phones.add(new Phone(resultSet.getString("phone_number"),
+                            readMoneyFromPhone(idPhone)
+                    ));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return phones;
     }
 }

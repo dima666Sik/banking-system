@@ -8,6 +8,7 @@ import ui.switchbox.SwitchBox;
 
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +40,7 @@ public class ReplenishPhoneForm extends JDialog {
             new ActionMenuForm(user);
         });
 
-        ArrayList<Card> cards = SwitchBox.setComboBoxList(user, comboBoxUserCards);
+        ArrayList<Card> cards = SwitchBox.setComboBoxListCards(user, comboBoxUserCards);
 
         comboBoxUserCards.addActionListener(e -> {
             if (comboBoxUserCards.getSelectedItem() != null) {
@@ -63,7 +64,9 @@ public class ReplenishPhoneForm extends JDialog {
 
     public void replenishment() {
         I_System i_system = new SystemImpl(user);
-        boolean flag = i_system.replenishPhone((String) comboBoxUserCards.getSelectedItem(), phoneField.getText(), sumField.getText());
+        boolean flag = i_system.replenishPhone((String) comboBoxUserCards.getSelectedItem(),
+                phoneField.getText(),
+                new BigDecimal(sumField.getText()));
         if (flag) {
             dispose();
             new ActionMenuForm(user);

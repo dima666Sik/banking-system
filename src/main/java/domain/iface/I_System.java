@@ -2,6 +2,7 @@ package domain.iface;
 
 import domain.models.Account;
 import domain.models.Card;
+import domain.models.Phone;
 import domain.models.User;
 
 import java.math.BigDecimal;
@@ -13,15 +14,10 @@ public interface I_System {
     /** replenish somebody a card amount*/
     boolean replenishOnTheCard(String ownCard, String rechargeableCard, BigDecimal replenishAmount);
     ArrayList<Card> returnListCardsUser();
+    ArrayList<Phone> returnListPhoneUser();
     void withdrawingMoney(BigDecimal withdrawingAmount);
-    /**
-     * replenish yourself a phone amount
-     *
-     * @return
-     */
-    boolean replenishPhone(String numberCard, String phone, String sum);
     /** replenish somebody a phone amount*/
-    void replenishPhone(BigDecimal replenishAmount, long numberPhone);
+    boolean replenishPhone(String numberCard, String phone, BigDecimal amount);
 
     /** temp method, add param ??? */
     default void utilityBill(BigDecimal replenishAmount){}

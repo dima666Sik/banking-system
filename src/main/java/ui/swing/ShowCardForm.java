@@ -1,36 +1,26 @@
 package ui.swing;
 
-import domain.iface.I_System;
 import domain.models.Card;
 import domain.models.User;
-import domain.system.SystemImpl;
 import ui.switchbox.SwitchBox;
 
 import javax.swing.*;
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-public class MoneyTransferForm extends JDialog {
-    private User user;
+public class ShowCardForm extends JDialog{
     private JComboBox comboBoxUserCards;
-    private JPanel panelReplenishmentCard;
-    private JTextField textFieldSomebodyCard;
-    private JTextField textFieldAmount;
-    private JButton buttonReturnInMenu;
-    private JButton replenishmentButton;
     private JTextField textFieldMoney;
     private JTextField textFieldCurrency;
+    private JButton backButton;
+    private JPanel panelTerminal;
 
-    public MoneyTransferForm(User user) {
-        this.user = user;
+    public ShowCardForm(User user) {
         setUndecorated(true);
-        setContentPane(panelReplenishmentCard);
-        setMinimumSize(new Dimension(860, 300));
+        setContentPane(panelTerminal);
+        setMinimumSize(new Dimension(720, 200));
 
         setModal(true);
         setLocationRelativeTo(null);
@@ -54,22 +44,11 @@ public class MoneyTransferForm extends JDialog {
             }
         });
 
-        buttonReturnInMenu.addActionListener(e -> {
+        backButton.addActionListener(e -> {
             dispose();
             new ActionMenuForm(user);
-        });
-        replenishmentButton.addActionListener(e -> {
-            replenishment();
         });
         setVisible(true);
     }
 
-    private void replenishment() {
-        I_System i_system = new SystemImpl(user);
-        boolean flag = i_system.replenishOnTheCard((String) comboBoxUserCards.getSelectedItem(), textFieldSomebodyCard.getText(), new BigDecimal(textFieldAmount.getText()));
-        if (flag) {
-            dispose();
-            new ActionMenuForm(user);
-        }
-    }
 }

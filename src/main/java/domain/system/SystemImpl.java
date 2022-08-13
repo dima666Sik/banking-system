@@ -47,8 +47,15 @@ public class SystemImpl implements I_System {
         Card own = cardsDAO.readCard(ownCard);
         Card rechargeable = cardsDAO.readCard(rechargeableCard);
 
-        if (own != null &&
-                rechargeable != null) {
+        if(own != null) {
+            JOptionPane.showMessageDialog(null,
+                    "The own card not found.",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (rechargeable != null) {
             BigDecimal resOwnAmount = own.getMoney().getAmount().subtract(replenishAmount);
             if (resOwnAmount.compareTo(BigDecimal.ZERO) >= 0) {
                 BigDecimal resRechargeableAmount = rechargeable.getMoney().getAmount().
@@ -61,7 +68,7 @@ public class SystemImpl implements I_System {
                     "Try again",
                     JOptionPane.ERROR_MESSAGE);
         } else JOptionPane.showMessageDialog(null,
-                "The card not found.",
+                "The rechargeable card not found.",
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return flag;
@@ -75,12 +82,19 @@ public class SystemImpl implements I_System {
     }
 
     @Override
+    public ArrayList<Phone> returnListPhoneUser() {
+        phoneDAO = new SQLPhoneDAO();
+
+        return phoneDAO.readPhones(user);
+    }
+
+    @Override
     public void withdrawingMoney(BigDecimal withdrawingAmount) {
 
     }
 
     @Override
-    public boolean replenishPhone(String numberCard, String phoneNumber, String sum) {
+    public boolean replenishPhone(String numberCard, String phoneNumber, BigDecimal amount) {
         boolean flag = false;
         CardsDAO cardsDAO = new SQLCardsDAO();
         PhoneDAO phoneDAO = new SQLPhoneDAO();
@@ -89,13 +103,21 @@ public class SystemImpl implements I_System {
         Card card = cardsDAO.readCard(numberCard);
         Phone phone = phoneDAO.readPhone(phoneNumber);
 
-        if (card != null && phone != null) {
+        if (card==null){
+            JOptionPane.showMessageDialog(null,
+                    "The card not found.",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (phone != null) {
             BigDecimal resOwnAmount = card.getMoney().getAmount().
-                    subtract(BigDecimal.valueOf(Double.parseDouble(sum)));
+                    subtract(amount);
             System.out.println(resOwnAmount);
             if (resOwnAmount.compareTo(BigDecimal.ZERO) >= 0) {
                 BigDecimal resIncreaseInPhoneAmount = phone.getMoney().getAmount().
-                        add(BigDecimal.valueOf(Double.parseDouble(sum)));
+                        add(amount);
                 moneyDAO.updateMoney(resOwnAmount, card);
                 moneyDAO.updateMoney(resIncreaseInPhoneAmount, phone);
                 flag = true;
@@ -104,17 +126,12 @@ public class SystemImpl implements I_System {
                     "Try again",
                     JOptionPane.ERROR_MESSAGE);
         } else JOptionPane.showMessageDialog(null,
-                "The card not found.",
+                "The phone not found.",
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return flag;
     }
 
-
-    @Override
-    public void replenishPhone(BigDecimal replenishAmount, long numberPhone) {
-
-    }
 
     @Override
     public void registration() {
