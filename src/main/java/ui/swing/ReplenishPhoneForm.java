@@ -4,6 +4,7 @@ import domain.iface.I_System;
 import domain.models.Card;
 import domain.models.User;
 import domain.system.SystemImpl;
+import ui.switchbox.SwitchBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,14 +29,18 @@ public class ReplenishPhoneForm extends JDialog {
         this.user = user;
         setUndecorated(true);
         setContentPane(panelReplenishMobil);
-        setMinimumSize(new Dimension(600, 500));
+        setMinimumSize(new Dimension(660, 400));
 
         setModal(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        exitButton.addActionListener(e -> dispose());
+        exitButton.addActionListener(e -> {
+            dispose();
+            new ActionMenuForm(user);
+        });
 
-        ArrayList<Card> cards = setComboBoxList();
+        ArrayList<Card> cards = SwitchBox.setComboBoxList(user, comboBoxUserCards);
+
         comboBoxUserCards.addActionListener(e -> {
             if (comboBoxUserCards.getSelectedItem() != null) {
                 List<Card> cardList = cards.stream().
@@ -54,18 +59,6 @@ public class ReplenishPhoneForm extends JDialog {
             replenishment();
         });
         setVisible(true);
-    }
-
-    private ArrayList<Card> setComboBoxList() {
-        I_System i_system = new SystemImpl(user);
-        ArrayList<Card> cards = i_system.returnListCardsUser();
-
-        Iterator<Card> iterator = cards.iterator();
-        comboBoxUserCards.addItem("Your choose");
-        while (iterator.hasNext()) {
-            comboBoxUserCards.addItem(iterator.next().getNumberCard());
-        }
-        return cards;
     }
 
     public void replenishment() {
