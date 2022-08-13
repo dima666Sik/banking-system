@@ -51,6 +51,7 @@ public class SQLMoneyDAO implements MoneyDAO {
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryMoney.updateMoneyForCard());
         ) {
+            System.out.println("re:"+replenishAmount);
             statement.setBigDecimal(1, replenishAmount);
             statement.setInt(2, SQLCheckID.checkIdCard(card));
             statement.executeUpdate();

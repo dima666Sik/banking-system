@@ -50,7 +50,7 @@ public class SQLCardsDAO implements CardsDAO {
                             resultSet.getString("card_end_data_month"),
                             resultSet.getString("card_end_data_year"),
                             resultSet.getString("cvc2"),
-                            readMoneyFromCard(idCard, user)
+                            readMoneyFromCard(idCard)
                     );
                 }
             }
@@ -75,7 +75,7 @@ public class SQLCardsDAO implements CardsDAO {
                             resultSet.getString("card_end_data_month"),
                             resultSet.getString("card_end_data_year"),
                             resultSet.getString("cvc2"),
-                            readMoneyFromCard(idCard, user)
+                            readMoneyFromCard(idCard)
                             ));
 
                 }
@@ -86,7 +86,7 @@ public class SQLCardsDAO implements CardsDAO {
         return cards;
     }
 
-    private Money readMoneyFromCard(int idCard, User user) {
+    private Money readMoneyFromCard(int idCard) {
         Money money = null;
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryMoney.selectMoneyForCard());
@@ -95,7 +95,7 @@ public class SQLCardsDAO implements CardsDAO {
             try (ResultSet resultSet = statement.executeQuery();
             ) {
                 while (resultSet.next()) {
-                    money = new Money(new BigDecimal(resultSet.getInt("amount_card")),
+                    money = new Money(resultSet.getBigDecimal("amount_card"),
                             Currency.getInstance(resultSet.getString("currency_card")));
                 }
             }

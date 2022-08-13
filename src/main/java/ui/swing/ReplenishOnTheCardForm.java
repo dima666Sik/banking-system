@@ -7,6 +7,7 @@ import domain.system.SystemImpl;
 
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -75,6 +76,9 @@ public class ReplenishOnTheCardForm extends JDialog{
 
     private void replenishment() {
         I_System i_system = new SystemImpl(user);
+        System.out.println(textFieldAmount.getText());
+        System.out.println(Double.parseDouble(textFieldAmount.getText()));
+        System.out.println(BigDecimal.valueOf(Double.parseDouble(textFieldAmount.getText())));
         boolean flag = i_system.replenishOnTheCard((String) comboBoxUserCards.getSelectedItem(),textFieldSomebodyCard.getText(),textFieldAmount.getText());
         if(flag){
             dispose();
