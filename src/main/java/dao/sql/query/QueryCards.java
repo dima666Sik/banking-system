@@ -18,6 +18,10 @@ public class QueryCards {
         return "insert into cards (number_card,card_end_data_month,card_end_data_year,cvc2,id_user) values (?,?,?,?,?);";
     }
 
+    public static String selectCardWithUserID() {
+        return "select * from cards where id_user in (?);";
+    }
+
     public static String selectCard() {
         return "select * from cards where number_card in (?);";
     }

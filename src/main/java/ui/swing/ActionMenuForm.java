@@ -59,6 +59,7 @@ public class ActionMenuForm extends JDialog{
 
     private void moneyTransfer() {
         dispose();
+        System.out.println(user);
         new ReplenishOnTheCardForm(user);
     }
 

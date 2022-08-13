@@ -18,7 +18,7 @@ public class RegistrationCardForUserForm extends JDialog {
 
     public RegistrationCardForUserForm(User user) {
         this.user = user;
-        this.user.setCard();
+        this.user.setGenerateCard();
         setUndecorated(true);
         setContentPane(panelRegistrationCard);
         setMinimumSize(new Dimension(480, 420));

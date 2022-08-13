@@ -2,13 +2,16 @@ package dao.sql;
 
 import dao.controller.DBConnector;
 import dao.iface.PhoneDAO;
+import dao.sql.query.QueryCards;
+import dao.sql.query.QueryMoney;
 import dao.sql.query.QueryPhone;
-import domain.models.Account;
-import domain.models.Phone;
-import domain.models.User;
+import domain.models.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Currency;
 
 public class SQLPhoneDAO implements PhoneDAO {
 
@@ -26,8 +29,44 @@ public class SQLPhoneDAO implements PhoneDAO {
     }
 
     @Override
-    public Phone readPhone() {
-        return null;
+    public Phone readPhone(int userId) {
+        Phone phone = null;
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryPhone.selectPhoneWithIdUser());
+        ) {
+            statement.setInt(1, userId);
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    int idPhone = resultSet.getInt("id_phone");
+                    phone = new Phone(resultSet.getString("phone_number"),
+                            readMoneyFromPhone(idPhone)
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return phone;
+    }
+
+    private Money readMoneyFromPhone(int idPhone) {
+        Money money = null;
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryMoney.selectMoneyForPhone());
+        ) {
+            statement.setInt(1, idPhone);
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    money = new Money(resultSet.getBigDecimal("amount_phone"),
+                            Currency.getInstance(resultSet.getString("currency_phone")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return money;
     }
 
     @Override

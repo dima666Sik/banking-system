@@ -35,6 +35,11 @@ public class QueryMoney {
         return "select * from money_card where id_card in (?);";
     }
 
+    public static String selectMoneyForPhone() {
+        return "select * from money_phone where id_phone in (?);";
+    }
+
+
     public static String updateMoneyForCard(){
         return "UPDATE money_card SET amount_card = (?) WHERE id_card = (?);";
     }

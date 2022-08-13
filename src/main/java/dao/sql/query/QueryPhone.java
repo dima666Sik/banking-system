@@ -18,4 +18,8 @@ public class QueryPhone {
     public static String selectPhone() {
        return "select * from phone where phone_number in (?);";
     }
+
+    public static String selectPhoneWithIdUser() {
+        return "select * from phone where id_user in (?);";
+    }
 }

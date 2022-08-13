@@ -4,6 +4,7 @@ import dao.controller.DBConnector;
 import dao.iface.UserDAO;
 import dao.sql.query.QueryUser;
 import domain.models.Account;
+import domain.models.Phone;
 import domain.models.User;
 
 import java.sql.*;
@@ -30,6 +31,8 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public User readUser(Account account) {
         User user = null;
+        SQLPhoneDAO sqlPhoneDAO = new SQLPhoneDAO();
+        SQLCardsDAO cardsDAO = new SQLCardsDAO();
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryUser.selectUser());
         ) {
@@ -43,7 +46,13 @@ public class SQLUserDAO implements UserDAO {
                     String login_user = resultSet.getString("login_user");
                     String password_user = resultSet.getString("password_user");
                     int sex = resultSet.getInt("sex");
-                    user = new User(login_user, password_user, first_name, last_name, sex, null);
+                    user = new User(login_user,
+                            password_user,
+                            first_name,
+                            last_name,
+                            sex,
+                            sqlPhoneDAO.readPhone(SQLCheckID.checkIdUser(account)));
+                    user.setCard(cardsDAO.readCard(SQLCheckID.checkIdUser(account)));
                 }
             }
         } catch (SQLException e) {

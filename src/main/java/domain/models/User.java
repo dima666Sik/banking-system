@@ -41,7 +41,7 @@ public class User extends Account {
         return card;
     }
 
-    public void setCard() {
+    public void setGenerateCard() {
         this.card = new Card(
                 Generator.generateNumberCard(),
                 Generator.generateCardEndDataMonth(),
@@ -49,6 +49,10 @@ public class User extends Account {
                 Generator.generateCVC2(),
                 new Money(new BigDecimal(0), Currency.getInstance(Locale.US))
         );
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 
     public Phone getPhone() {

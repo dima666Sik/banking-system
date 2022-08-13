@@ -5,7 +5,7 @@ import domain.models.User;
 
 public interface PhoneDAO {
     void createPhone(User user);
-    Phone readPhone();
+    Phone readPhone(int userId);
     Phone updatePhone();
     void deletePhone();
 }
