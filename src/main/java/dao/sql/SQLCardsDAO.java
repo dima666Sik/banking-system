@@ -4,6 +4,7 @@ import dao.controller.DBConnector;
 import dao.iface.CardsDAO;
 import dao.sql.query.QueryCards;
 import dao.sql.query.QueryMoney;
+import dao.sql.query.QueryUser;
 import domain.models.Account;
 import domain.models.Card;
 import domain.models.Money;
@@ -35,8 +36,28 @@ public class SQLCardsDAO implements CardsDAO {
     }
 
     @Override
-    public Card readCard() {
-        return null;
+    public Card readCard(String numberCard, User user) {
+        Card card = null;
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryCards.selectCard());
+        ) {
+            statement.setString(1, numberCard);
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    int idCard = resultSet.getInt("id_card");
+                    card = new Card(resultSet.getString("number_card"),
+                            resultSet.getString("card_end_data_month"),
+                            resultSet.getString("card_end_data_year"),
+                            resultSet.getString("cvc2"),
+                            readMoneyFromCard(idCard, user)
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return card;
     }
 
     @Override

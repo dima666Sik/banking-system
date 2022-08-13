@@ -75,6 +75,10 @@ public class ReplenishOnTheCardForm extends JDialog{
 
     private void replenishment() {
         I_System i_system = new SystemImpl(user);
-        i_system.replenishOnTheCard((String) comboBoxUserCards.getSelectedItem(),textFieldSomebodyCard.getText(),textFieldAmount.getText());
+        boolean flag = i_system.replenishOnTheCard((String) comboBoxUserCards.getSelectedItem(),textFieldSomebodyCard.getText(),textFieldAmount.getText());
+        if(flag){
+            dispose();
+            new ActionMenuForm(user);
+        }
     }
 }

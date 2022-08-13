@@ -25,4 +25,5 @@ public class QueryCards {
     public static String selectCards() {
         return "select * from cards where id_user in (?);";
     }
+
 }

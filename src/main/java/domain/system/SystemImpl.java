@@ -38,8 +38,29 @@ public class SystemImpl implements I_System {
     }
 
     @Override
-    public void replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount) {
+    public boolean replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount) {
+        boolean flag = false;
+        CardsDAO cardsDAO = new SQLCardsDAO();
+        MoneyDAO moneyDAO = new SQLMoneyDAO();
 
+        Card own = cardsDAO.readCard(ownCard, user);
+        Card rechargeable = cardsDAO.readCard(rechargeableCard, user);
+
+        if (own != null &&
+                rechargeable != null) {
+            BigDecimal resOwnAmount = own.getMoney().getAmount().subtract(BigDecimal.valueOf(Double.parseDouble(replenishAmount)));
+            if (resOwnAmount.compareTo(BigDecimal.ZERO) >= 0) {
+                BigDecimal resRechargeableAmount = rechargeable.getMoney().getAmount().
+                        add(BigDecimal.valueOf(Double.parseDouble(replenishAmount)));
+                moneyDAO.updateMoney(resOwnAmount, own);
+                moneyDAO.updateMoney(resRechargeableAmount, rechargeable);
+                flag = true;
+            } else JOptionPane.showMessageDialog(null,
+                    "The senders money account is less than the amount sent.",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return flag;
     }
 
     @Override

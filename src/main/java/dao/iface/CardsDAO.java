@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface CardsDAO{
     void createCard(User user);
-    Card readCard();
+    Card readCard(String numberCard, User user);
     ArrayList<Card> readCards(User user);
     Card updateCard();
     void deleteCard();

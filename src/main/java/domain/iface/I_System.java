@@ -11,7 +11,7 @@ public interface I_System {
     /** replenish yourself a card amount*/
     void replenishOnTheCard(String ownCard,String replenishAmount);
     /** replenish somebody a card amount*/
-    void replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount);
+    boolean replenishOnTheCard(String ownCard, String rechargeableCard, String replenishAmount);
     ArrayList<Card> returnListCardsUser();
     void withdrawingMoney(BigDecimal withdrawingAmount);
     /** replenish yourself a phone amount*/
