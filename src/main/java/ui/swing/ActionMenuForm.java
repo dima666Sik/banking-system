@@ -59,6 +59,9 @@ public class ActionMenuForm extends JDialog{
     }
 
     private void replenishmentOfMobile() {
+        dispose();
+        System.out.println(user);
+        new ReplenishPhoneForm(user);
     }
 
     private void moneyTransfer() {

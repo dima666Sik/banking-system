@@ -30,7 +30,7 @@ public class RegistrationUserForm extends JDialog {
     public RegistrationUserForm() {
         setUndecorated(true);
         setContentPane(panelRegistration);
-        setMinimumSize(new Dimension(480, 420));
+        setMinimumSize(new Dimension(500, 500));
         setModal(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);

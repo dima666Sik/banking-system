@@ -43,4 +43,7 @@ public class QueryMoney {
     public static String updateMoneyForCard(){
         return "UPDATE money_card SET amount_card = (?) WHERE id_card = (?);";
     }
+    public static String updateMoneyForPhone(){
+        return "UPDATE money_phone SET amount_phone = (?) WHERE id_phone = (?);";
+    }
 }

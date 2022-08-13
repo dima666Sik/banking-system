@@ -11,6 +11,7 @@ import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
 import domain.models.Account;
 import domain.models.Card;
+import domain.models.Phone;
 import domain.models.User;
 
 import javax.swing.*;
@@ -59,7 +60,7 @@ public class SystemImpl implements I_System {
                     "The senders money account is less than the amount sent.",
                     "Try again",
                     JOptionPane.ERROR_MESSAGE);
-        }else JOptionPane.showMessageDialog(null,
+        } else JOptionPane.showMessageDialog(null,
                 "The card not found.",
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
@@ -79,9 +80,36 @@ public class SystemImpl implements I_System {
     }
 
     @Override
-    public void replenishPhone(BigDecimal replenishAmount) {
+    public boolean replenishPhone(String numberCard, String phoneNumber, String sum) {
+        boolean flag = false;
+        CardsDAO cardsDAO = new SQLCardsDAO();
+        PhoneDAO phoneDAO = new SQLPhoneDAO();
+        MoneyDAO moneyDAO = new SQLMoneyDAO();
 
+        Card card = cardsDAO.readCard(numberCard);
+        Phone phone = phoneDAO.readPhone(phoneNumber);
+
+        if (card != null && phone != null) {
+            BigDecimal resOwnAmount = card.getMoney().getAmount().
+                    subtract(BigDecimal.valueOf(Double.parseDouble(sum)));
+            System.out.println(resOwnAmount);
+            if (resOwnAmount.compareTo(BigDecimal.ZERO) >= 0) {
+                BigDecimal resIncreaseInPhoneAmount = phone.getMoney().getAmount().
+                        add(BigDecimal.valueOf(Double.parseDouble(sum)));
+                moneyDAO.updateMoney(resOwnAmount, card);
+                moneyDAO.updateMoney(resIncreaseInPhoneAmount, phone);
+                flag = true;
+            } else JOptionPane.showMessageDialog(null,
+                    "The senders money account is less than the amount sent.",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+        } else JOptionPane.showMessageDialog(null,
+                "The card not found.",
+                "Try again",
+                JOptionPane.ERROR_MESSAGE);
+        return flag;
     }
+
 
     @Override
     public void replenishPhone(BigDecimal replenishAmount, long numberPhone) {

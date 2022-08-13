@@ -28,12 +28,12 @@ public class SQLPhoneDAO implements PhoneDAO {
     }
 
     @Override
-    public Phone readPhone(int userId) {
+    public Phone readPhone(String phoneNumber) {
         Phone phone = null;
         try (Connection connection = DBConnector.getConnector();
-             PreparedStatement statement = connection.prepareStatement(QueryPhone.selectPhoneWithIdUser());
+             PreparedStatement statement = connection.prepareStatement(QueryPhone.selectPhoneWithPhoneNumber());
         ) {
-            statement.setInt(1, userId);
+            statement.setString(1, phoneNumber);
             try (ResultSet resultSet = statement.executeQuery();
             ) {
                 while (resultSet.next()) {

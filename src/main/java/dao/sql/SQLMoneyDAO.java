@@ -5,6 +5,7 @@ import dao.iface.MoneyDAO;
 import dao.sql.query.QueryMoney;
 import domain.models.Card;
 import domain.models.Money;
+import domain.models.Phone;
 import domain.models.User;
 
 import java.math.BigDecimal;
@@ -51,9 +52,23 @@ public class SQLMoneyDAO implements MoneyDAO {
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryMoney.updateMoneyForCard());
         ) {
-            System.out.println("re:"+replenishAmount);
+            System.out.println("re:" + replenishAmount);
             statement.setBigDecimal(1, replenishAmount);
             statement.setInt(2, SQLCheckID.checkIdCard(card));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateMoney(BigDecimal replenishAmount, Phone phone) {
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryMoney.updateMoneyForPhone());
+        ) {
+            System.out.println("re:" + replenishAmount);
+            statement.setBigDecimal(1, replenishAmount);
+            statement.setInt(2, SQLCheckID.checkIdPhone(phone));
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

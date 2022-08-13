@@ -16,5 +16,5 @@
 <br>:x:Withdrawing money from the card;
 <br>:x:Opportunity to take out a loan;
 <br>☑️Money transfer;
-<br>:x:Replenishment of mobile;
+<br>☑️Replenishment of mobile;
 <br>:x:Payment of utility services.
