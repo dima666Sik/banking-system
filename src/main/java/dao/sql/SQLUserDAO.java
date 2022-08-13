@@ -4,10 +4,12 @@ import dao.controller.DBConnector;
 import dao.iface.UserDAO;
 import dao.sql.query.QueryUser;
 import domain.models.Account;
+import domain.models.Card;
 import domain.models.Phone;
 import domain.models.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class SQLUserDAO implements UserDAO {
@@ -33,6 +35,7 @@ public class SQLUserDAO implements UserDAO {
         User user = null;
         SQLPhoneDAO sqlPhoneDAO = new SQLPhoneDAO();
         SQLCardsDAO cardsDAO = new SQLCardsDAO();
+
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryUser.selectUser());
         ) {
@@ -52,7 +55,8 @@ public class SQLUserDAO implements UserDAO {
                             last_name,
                             sex,
                             sqlPhoneDAO.readPhone(SQLCheckID.checkIdUser(account)));
-                    user.setCard(cardsDAO.readCard(SQLCheckID.checkIdUser(account)));
+
+                    user.setCards(cardsDAO.readCards(user));
                 }
             }
         } catch (SQLException e) {

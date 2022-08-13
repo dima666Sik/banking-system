@@ -99,7 +99,7 @@ public class User extends Account {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex=" + sex +
-                ", card=" + card +
+                ", cards=" + cards +
                 ", phone=" + phone +
                 '}';
     }

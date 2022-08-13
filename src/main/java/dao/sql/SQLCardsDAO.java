@@ -61,31 +61,6 @@ public class SQLCardsDAO implements CardsDAO {
     }
 
     @Override
-    public Card readCard(int userId) {
-        Card card = null;
-        try (Connection connection = DBConnector.getConnector();
-             PreparedStatement statement = connection.prepareStatement(QueryCards.selectCardWithUserID());
-        ) {
-            statement.setInt(1, userId);
-            try (ResultSet resultSet = statement.executeQuery();
-            ) {
-                while (resultSet.next()) {
-                    int idCard = resultSet.getInt("id_card");
-                    card = new Card(resultSet.getString("number_card"),
-                            resultSet.getString("card_end_data_month"),
-                            resultSet.getString("card_end_data_year"),
-                            resultSet.getString("cvc2"),
-                            readMoneyFromCard(idCard)
-                    );
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return card;
-    }
-
-    @Override
     public ArrayList<Card> readCards(User user) {
         ArrayList<Card> cards = new ArrayList<>();
         try (Connection connection = DBConnector.getConnector();
