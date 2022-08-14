@@ -19,6 +19,6 @@
 <br>☑️Replenishment of mobile;
 <br>:x:Payment of utility services;
 <br>☑️Create new card;
-<br>:x:Add addition phone;
+<br>☑️Add addition phone;
 <br>☑️Check amount on the card;
 <br>☑️Check amount on the phone.

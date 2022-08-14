@@ -19,10 +19,6 @@ public class QueryPhone {
        return "select * from phone where phone_number in (?);";
     }
 
-    public static String selectPhoneWithPhoneNumber() {
-        return "select * from phone where phone_number in (?);";
-    }
-
     public static String selectPhones() {
         return "select * from phone where id_user in (?);";
     }

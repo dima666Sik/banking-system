@@ -40,7 +40,13 @@ public class RegistrationCardForUserForm extends JDialog {
     private void registrationCard() {
         dispose();
         I_System i_system = new SystemImpl(user);
-        i_system.registrationCard();
-        new ActionMenuForm(user);
+
+        if (i_system.registrationCard()) {
+            dispose();
+            new ActionMenuForm(user);
+        }else{
+            dispose();
+            new RegistrationCardForUserForm(user);
+        }
     }
 }

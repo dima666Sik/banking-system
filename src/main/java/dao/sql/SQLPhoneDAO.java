@@ -2,11 +2,11 @@ package dao.sql;
 
 import dao.controller.DBConnector;
 import dao.iface.PhoneDAO;
-import dao.sql.query.QueryCards;
 import dao.sql.query.QueryMoney;
 import dao.sql.query.QueryPhone;
 import domain.models.*;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,23 +17,33 @@ import java.util.Currency;
 public class SQLPhoneDAO implements PhoneDAO {
 
     @Override
-    public void createPhone(User user){
-        try (Connection connection = DBConnector.getConnector();
-             PreparedStatement statement = connection.prepareStatement(QueryPhone.createPhone());
-        ) {
-            statement.setString(1, user.getPhone().getPhoneNumber());
-            statement.setInt(2, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
-            statement.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+    public boolean createPhone(User user) {
+        boolean flag = true;
+        if (readPhone(user.getPhone().getPhoneNumber())==null) {
+            try (Connection connection = DBConnector.getConnector();
+                 PreparedStatement statement = connection.prepareStatement(QueryPhone.createPhone());
+            ) {
+                statement.setString(1, user.getPhone().getPhoneNumber());
+                statement.setInt(2, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            flag = false;
+            JOptionPane.showMessageDialog(null,
+                    "Phone is exist",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
         }
+        return flag;
     }
 
     @Override
     public Phone readPhone(String phoneNumber) {
         Phone phone = null;
         try (Connection connection = DBConnector.getConnector();
-             PreparedStatement statement = connection.prepareStatement(QueryPhone.selectPhoneWithPhoneNumber());
+             PreparedStatement statement = connection.prepareStatement(QueryPhone.selectPhone());
         ) {
             statement.setString(1, phoneNumber);
             try (ResultSet resultSet = statement.executeQuery();

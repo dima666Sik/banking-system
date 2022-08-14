@@ -19,6 +19,16 @@ public class User extends Account {
 
     private Phone phone;
 
+    private ArrayList<Phone> phones;
+
+    public ArrayList<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(ArrayList<Phone> phones) {
+        this.phones = phones;
+    }
+
     public User(String login, String password, String firstName, String lastName, int sex) {
         super(login,password);
         this.firstName = firstName;
@@ -38,6 +48,10 @@ public class User extends Account {
                 Generator.generateCVC2(),
                 new Money(new BigDecimal(0), Currency.getInstance(Locale.US))
         );
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 
     public void setCard(Card card) {

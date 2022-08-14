@@ -75,7 +75,7 @@ public class ActionMenuForm extends JDialog{
     private void addAdditionPhone() {
         dispose();
         System.out.println(user);
-//        new AddAdditionPhoneForm(user);
+        new AddAdditionPhoneForm(user);
     }
 
     private void createNewCard() {

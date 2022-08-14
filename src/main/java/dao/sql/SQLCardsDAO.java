@@ -4,13 +4,12 @@ import dao.controller.DBConnector;
 import dao.iface.CardsDAO;
 import dao.sql.query.QueryCards;
 import dao.sql.query.QueryMoney;
-import dao.sql.query.QueryUser;
 import domain.models.Account;
 import domain.models.Card;
 import domain.models.Money;
 import domain.models.User;
 
-import java.math.BigDecimal;
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,19 +19,49 @@ import java.util.Currency;
 
 public class SQLCardsDAO implements CardsDAO {
     @Override
-    public void createCard(User user) {
+    public boolean createCard(User user) {
+        boolean flag = true;
+        if (cardIsExist(user)) {
+            try (Connection connection = DBConnector.getConnector();
+                 PreparedStatement statement = connection.prepareStatement(QueryCards.createCards());
+            ) {
+                statement.setString(1, user.getCard().getNumberCard());
+                statement.setString(2, user.getCard().getCardEndDataMonth());
+                statement.setString(3, user.getCard().getCardEndDataYear());
+                statement.setString(4, user.getCard().getCVC2());
+                statement.setInt(5, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            flag = false;
+            JOptionPane.showMessageDialog(null,
+                    "Such user is defined, please change login...",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return flag;
+    }
+
+    private boolean cardIsExist(User user) {
+        boolean flag = true;
+        System.out.println(user.getLogin());
         try (Connection connection = DBConnector.getConnector();
-             PreparedStatement statement = connection.prepareStatement(QueryCards.createCards());
+             PreparedStatement statement = connection.prepareStatement(QueryCards.selectCard());
         ) {
             statement.setString(1, user.getCard().getNumberCard());
-            statement.setString(2, user.getCard().getCardEndDataMonth());
-            statement.setString(3, user.getCard().getCardEndDataYear());
-            statement.setString(4, user.getCard().getCVC2());
-            statement.setInt(5, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
-            statement.executeUpdate();
-        } catch (Exception e) {
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    flag = false;
+                    break;
+                }
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+        return flag;
     }
 
     @Override
@@ -76,7 +105,7 @@ public class SQLCardsDAO implements CardsDAO {
                             resultSet.getString("card_end_data_year"),
                             resultSet.getString("cvc2"),
                             readMoneyFromCard(idCard)
-                            ));
+                    ));
 
                 }
             }

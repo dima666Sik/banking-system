@@ -22,10 +22,11 @@ public interface I_System {
     /** temp method, add param ??? */
     default void utilityBill(BigDecimal replenishAmount){}
     default void takeOutLoan(){}
+    boolean addPhone(String numberPhone);
 
     /** registration user in system */
-    void registration();
-    void registrationCard();
+    boolean registration();
+    boolean registrationCard();
     /** authorization user in system */
     User authorization(Account account);
 }

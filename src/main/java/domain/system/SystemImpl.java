@@ -9,14 +9,13 @@ import dao.sql.SQLMoneyDAO;
 import dao.sql.SQLPhoneDAO;
 import dao.sql.SQLUserDAO;
 import domain.iface.I_System;
-import domain.models.Account;
-import domain.models.Card;
-import domain.models.Phone;
-import domain.models.User;
+import domain.models.*;
 
 import javax.swing.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Currency;
+import java.util.Locale;
 
 public class SystemImpl implements I_System {
     private User user;
@@ -47,10 +46,10 @@ public class SystemImpl implements I_System {
                     "Try again",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-                BigDecimal resOwnAmount = own.getMoney().getAmount().
-                        add(replenishAmount);
-                moneyDAO.updateMoney(resOwnAmount, own);
-                flag = true;
+            BigDecimal resOwnAmount = own.getMoney().getAmount().
+                    add(replenishAmount);
+            moneyDAO.updateMoney(resOwnAmount, own);
+            flag = true;
         }
         return flag;
     }
@@ -167,30 +166,46 @@ public class SystemImpl implements I_System {
         return flag;
     }
 
+    @Override
+    public boolean addPhone(String numberPhone) {
+        phoneDAO = new SQLPhoneDAO();
+        moneyDAO = new SQLMoneyDAO();
+        user.setPhone(new Phone(numberPhone, new Money(new BigDecimal(0), Currency.getInstance(Locale.US))));
+        boolean flag = phoneDAO.createPhone(user);
+        if (flag) {
+            moneyDAO.createMoneyForPhone(user);
+        }
+        return flag;
+    }
+
 
     @Override
-    public void registration() {
+    public boolean registration() {
         System.out.println(user);
 
         userDAO = new SQLUserDAO();
         phoneDAO = new SQLPhoneDAO();
         moneyDAO = new SQLMoneyDAO();
 
-        userDAO.createUser(user);
-        phoneDAO.createPhone(user);
-        moneyDAO.createMoneyForPhone(user);
+        boolean flag = userDAO.createUser(user);
 
+        if (flag) {
+            phoneDAO.createPhone(user);
+            moneyDAO.createMoneyForPhone(user);
+        }
+        return flag;
     }
 
     @Override
-    public void registrationCard() {
+    public boolean registrationCard() {
         cardsDAO = new SQLCardsDAO();
         moneyDAO = new SQLMoneyDAO();
 
-        cardsDAO.createCard(user);
-        moneyDAO.createMoneyForCard(user);
-
-        System.out.println("E.N.D.");
+        boolean flag = cardsDAO.createCard(user);
+        if (flag) {
+            moneyDAO.createMoneyForCard(user);
+        }
+        return flag;
     }
 
     @Override

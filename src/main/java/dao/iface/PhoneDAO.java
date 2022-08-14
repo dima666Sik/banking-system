@@ -6,7 +6,7 @@ import domain.models.User;
 import java.util.ArrayList;
 
 public interface PhoneDAO {
-    void createPhone(User user);
+    boolean createPhone(User user);
     Phone readPhone(String phone);
     Phone updatePhone();
     void deletePhone();

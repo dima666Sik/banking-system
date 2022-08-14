@@ -59,7 +59,6 @@ public class RegistrationUserForm extends JDialog {
         ) {
             if (Arrays.equals(passwordField.getPassword(), passwordConfirmField.getPassword())) {
                 if (passwordField.getPassword().length >= 6) {
-                    dispose();
                     User user = new User(textFieldLogin.getText().toCharArray(),
                             passwordField.getPassword(),
                             textFieldFirstName.getText(),
@@ -74,10 +73,11 @@ public class RegistrationUserForm extends JDialog {
 
                     I_System i_system = new SystemImpl(user);
 
-                    i_system.registration();
-                    new RegistrationCardForUserForm(user);
-                }
-                else{
+                    if (i_system.registration()) {
+                        dispose();
+                        new RegistrationCardForUserForm(user);
+                    }
+                } else {
                     JOptionPane.showMessageDialog(this,
                             "Password less 6 symbols.",
                             "Try again",

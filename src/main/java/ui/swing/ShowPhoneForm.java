@@ -1,6 +1,5 @@
 package ui.swing;
 
-import domain.models.Card;
 import domain.models.Phone;
 import domain.models.User;
 import ui.switchbox.SwitchBox;
