@@ -15,11 +15,11 @@ public class ShowCardForm extends JDialog{
     private JTextField textFieldMoney;
     private JTextField textFieldCurrency;
     private JButton backButton;
-    private JPanel panelTerminal;
+    private JPanel panelShowCard;
 
     public ShowCardForm(User user) {
         setUndecorated(true);
-        setContentPane(panelTerminal);
+        setContentPane(panelShowCard);
         setMinimumSize(new Dimension(720, 200));
 
         setModal(true);

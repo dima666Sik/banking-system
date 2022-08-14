@@ -55,7 +55,7 @@ public class ActionMenuForm extends JDialog{
             new AuthorizationForm();
         });
         createNewCardButton.addActionListener(e -> {
-
+            createNewCard();
         });
 
         checkAmountCardsButton.addActionListener(e -> {
@@ -66,13 +66,22 @@ public class ActionMenuForm extends JDialog{
            checkAmountPhone();
         });
 
-        setVisible(true);
-        addAdditionPhoneButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        addAdditionPhoneButton.addActionListener(e -> {
+            addAdditionPhone();
         });
+        setVisible(true);
+    }
+
+    private void addAdditionPhone() {
+        dispose();
+        System.out.println(user);
+//        new AddAdditionPhoneForm(user);
+    }
+
+    private void createNewCard() {
+        dispose();
+        System.out.println(user);
+        new RegistrationCardForUserForm(user);
     }
 
     private void checkAmountPhone() {
@@ -107,6 +116,9 @@ public class ActionMenuForm extends JDialog{
     }
 
     private void withdrawingMoney() {
+        dispose();
+        System.out.println(user);
+        new WithdrawingMoneyForm(user);
     }
 
     private void terminal() {

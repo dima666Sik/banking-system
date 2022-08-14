@@ -12,13 +12,13 @@
 ☑️Sing in;
 <br>☑️Registration;
 <br>☑️Menu acts;
-<br>:x:Replenishment of the account on the card;
-<br>:x:Withdrawing money from the card;
+<br>☑️Replenishment of the account on the card;
+<br>☑️Withdrawing money from the card;
 <br>:x:Opportunity to take out a loan;
 <br>☑️Money transfer;
 <br>☑️Replenishment of mobile;
 <br>:x:Payment of utility services;
-<br>:x:Create new card;
+<br>☑️Create new card;
 <br>:x:Add addition phone;
 <br>☑️Check amount on the card;
 <br>☑️Check amount on the phone.
