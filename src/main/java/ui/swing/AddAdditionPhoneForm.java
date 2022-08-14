@@ -18,7 +18,7 @@ public class AddAdditionPhoneForm extends JDialog {
         this.user = user;
         setUndecorated(true);
         setContentPane(panelAddAdditionPhone);
-        setMinimumSize(new Dimension(860, 300));
+        setMinimumSize(new Dimension(560, 100));
 
         setModal(true);
         setLocationRelativeTo(null);

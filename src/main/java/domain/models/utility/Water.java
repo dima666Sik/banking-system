@@ -1,4 +1,12 @@
 package domain.models.utility;
 
-public class Water {
+import domain.env.EnvironmentUtilities;
+
+import java.math.BigDecimal;
+
+public class Water extends Utility{
+
+    public Water(String nameUtility, BigDecimal payForUtility, EnvironmentUtilities environmentUtilities) {
+        super(nameUtility, payForUtility, environmentUtilities);
+    }
 }

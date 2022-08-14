@@ -97,7 +97,8 @@ public class ActionMenuForm extends JDialog{
     }
 
     private void paymentOfUtilityService() {
-
+        dispose();
+        new MenuChooseUtilityServiceForm(user);
     }
 
     private void replenishmentOfMobile() {
