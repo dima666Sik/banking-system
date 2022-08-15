@@ -4,13 +4,11 @@ import dao.controller.DBConnector;
 import dao.iface.UserDAO;
 import dao.sql.query.QueryUser;
 import domain.models.Account;
-import domain.models.Card;
-import domain.models.Phone;
+
 import domain.models.User;
 
 import javax.swing.*;
 import java.sql.*;
-import java.util.ArrayList;
 
 
 public class SQLUserDAO implements UserDAO {

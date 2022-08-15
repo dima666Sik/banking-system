@@ -5,15 +5,13 @@ import domain.models.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class ActionMenuForm extends JDialog{
     private User user;
     private JButton replenishmentOfTheAccountButton;
     private JButton withdrawingMoneyFromTheButton;
     private JButton exitButton;
-    private JButton paymentOfUtilityServiceButton;
     private JButton moneyTransferButton;
     private JButton opportunityToTakeOutButton;
     private JButton replenishmentOfMobileButton;
@@ -46,9 +44,6 @@ public class ActionMenuForm extends JDialog{
         });
         replenishmentOfMobileButton.addActionListener(e -> {
             replenishmentOfMobile();
-        });
-        paymentOfUtilityServiceButton.addActionListener(e -> {
-            paymentOfUtilityService();
         });
         exitButton.addActionListener(e -> {
             dispose();
@@ -94,11 +89,6 @@ public class ActionMenuForm extends JDialog{
         dispose();
         System.out.println(user);
         new ShowCardForm(user);
-    }
-
-    private void paymentOfUtilityService() {
-        dispose();
-        new MenuChooseUtilityServiceForm(user);
     }
 
     private void replenishmentOfMobile() {

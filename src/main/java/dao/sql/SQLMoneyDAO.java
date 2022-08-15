@@ -11,7 +11,9 @@ import domain.models.User;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Currency;
 
 public class SQLMoneyDAO implements MoneyDAO {
     @Override
@@ -43,8 +45,43 @@ public class SQLMoneyDAO implements MoneyDAO {
     }
 
     @Override
-    public Money readMoney() {
-        return null;
+    public Money readMoneyFromCard(int idCard) {
+        Money money = null;
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryMoney.selectMoneyForCard());
+        ) {
+            statement.setInt(1, idCard);
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    money = new Money(resultSet.getBigDecimal("amount_card"),
+                            Currency.getInstance(resultSet.getString("currency_card")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return money;
+    }
+
+    @Override
+    public Money readMoneyFromPhone(int idPhone) {
+        Money money = null;
+        try (Connection connection = DBConnector.getConnector();
+             PreparedStatement statement = connection.prepareStatement(QueryMoney.selectMoneyForPhone());
+        ) {
+            statement.setInt(1, idPhone);
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    money = new Money(resultSet.getBigDecimal("amount_phone"),
+                            Currency.getInstance(resultSet.getString("currency_phone")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return money;
     }
 
     @Override
@@ -52,7 +89,6 @@ public class SQLMoneyDAO implements MoneyDAO {
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryMoney.updateMoneyForCard());
         ) {
-            System.out.println("re:" + replenishAmount);
             statement.setBigDecimal(1, replenishAmount);
             statement.setInt(2, SQLCheckID.checkIdCard(card));
             statement.executeUpdate();
@@ -66,7 +102,6 @@ public class SQLMoneyDAO implements MoneyDAO {
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryMoney.updateMoneyForPhone());
         ) {
-            System.out.println("re:" + replenishAmount);
             statement.setBigDecimal(1, replenishAmount);
             statement.setInt(2, SQLCheckID.checkIdPhone(phone));
             statement.executeUpdate();

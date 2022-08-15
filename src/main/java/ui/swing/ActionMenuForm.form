@@ -85,17 +85,6 @@
               <text value="Replenishment of mobile"/>
             </properties>
           </component>
-          <component id="28b17" class="javax.swing.JButton" binding="paymentOfUtilityServiceButton" default-binding="true">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-16606948"/>
-              <font name="Algerian" size="14" style="0"/>
-              <foreground color="-723724"/>
-              <text value="Payment of utility service"/>
-            </properties>
-          </component>
           <component id="af59f" class="javax.swing.JButton" binding="withdrawingMoneyFromTheButton" default-binding="true">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -129,17 +118,6 @@
               <text value="Check Amount on the Phone"/>
             </properties>
           </component>
-          <component id="490d4" class="javax.swing.JButton" binding="checkAmountCardsButton" default-binding="true">
-            <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-14643815"/>
-              <font name="Algerian" size="14" style="0"/>
-              <foreground color="-723724"/>
-              <text value="Check Amount on the Cards"/>
-            </properties>
-          </component>
           <component id="9b309" class="javax.swing.JButton" binding="addAdditionPhoneButton" default-binding="true">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -149,6 +127,17 @@
               <font name="Algerian" size="14" style="0"/>
               <foreground color="-723724"/>
               <text value="Add addition phone"/>
+            </properties>
+          </component>
+          <component id="490d4" class="javax.swing.JButton" binding="checkAmountCardsButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-14643815"/>
+              <font name="Algerian" size="14" style="0"/>
+              <foreground color="-723724"/>
+              <text value="Check Amount on the Cards"/>
             </properties>
           </component>
         </children>

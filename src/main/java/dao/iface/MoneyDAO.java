@@ -10,7 +10,8 @@ import java.math.BigDecimal;
 public interface MoneyDAO {
     void createMoneyForPhone(User user);
     void createMoneyForCard(User user);
-    Money readMoney();
+    Money readMoneyFromCard(int idCard);
+    public Money readMoneyFromPhone(int idPhone);
     void updateMoney(BigDecimal replenishAmount, Card card);
     void updateMoney(BigDecimal replenishAmount, Phone phone);
     void deleteMoney();

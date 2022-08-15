@@ -19,15 +19,6 @@ public class User extends Account {
 
     private Phone phone;
 
-    private ArrayList<Phone> phones;
-
-    public ArrayList<Phone> getPhones() {
-        return phones;
-    }
-
-    public void setPhones(ArrayList<Phone> phones) {
-        this.phones = phones;
-    }
 
     public User(String login, String password, String firstName, String lastName, int sex) {
         super(login,password);
@@ -87,13 +78,13 @@ public class User extends Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return sex == user.sex && firstName.equals(user.firstName) && lastName.equals(user.lastName) && phone.equals(user.phone) && super.getLogin().equals(user.getLogin()) && super.getPassword().equals(user.getPassword());
+        return sex == user.sex && firstName.equals(user.firstName) && lastName.equals(user.lastName) && super.getLogin().equals(user.getLogin()) && super.getPassword().equals(user.getPassword());
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, sex, phone);
+        return Objects.hash(firstName, lastName, sex);
     }
 
     @Override
@@ -102,7 +93,6 @@ public class User extends Account {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", sex=" + sex +
-                ", phone=" + phone +
                 '}';
     }
 }

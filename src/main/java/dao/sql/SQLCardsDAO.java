@@ -15,9 +15,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Currency;
 
 public class SQLCardsDAO implements CardsDAO {
+    private final SQLMoneyDAO moneyDAO = new SQLMoneyDAO();
+
     @Override
     public boolean createCard(User user) {
         boolean flag = true;
@@ -79,7 +80,7 @@ public class SQLCardsDAO implements CardsDAO {
                             resultSet.getString("card_end_data_month"),
                             resultSet.getString("card_end_data_year"),
                             resultSet.getString("cvc2"),
-                            readMoneyFromCard(idCard)
+                            moneyDAO.readMoneyFromCard(idCard)
                     );
                 }
             }
@@ -104,7 +105,7 @@ public class SQLCardsDAO implements CardsDAO {
                             resultSet.getString("card_end_data_month"),
                             resultSet.getString("card_end_data_year"),
                             resultSet.getString("cvc2"),
-                            readMoneyFromCard(idCard)
+                            moneyDAO.readMoneyFromCard(idCard)
                     ));
 
                 }
@@ -113,25 +114,6 @@ public class SQLCardsDAO implements CardsDAO {
             e.printStackTrace();
         }
         return cards;
-    }
-
-    private Money readMoneyFromCard(int idCard) {
-        Money money = null;
-        try (Connection connection = DBConnector.getConnector();
-             PreparedStatement statement = connection.prepareStatement(QueryMoney.selectMoneyForCard());
-        ) {
-            statement.setInt(1, idCard);
-            try (ResultSet resultSet = statement.executeQuery();
-            ) {
-                while (resultSet.next()) {
-                    money = new Money(resultSet.getBigDecimal("amount_card"),
-                            Currency.getInstance(resultSet.getString("currency_card")));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return money;
     }
 
     @Override
