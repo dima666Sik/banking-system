@@ -27,7 +27,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="№ Card"/>
+          <text value="Choose youself card:"/>
         </properties>
       </component>
       <component id="62bc2" class="javax.swing.JLabel">

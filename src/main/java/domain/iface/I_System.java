@@ -2,6 +2,7 @@ package domain.iface;
 
 import domain.models.Account;
 import domain.models.Card;
+import domain.models.Loan;
 import domain.models.User;
 
 import java.math.BigDecimal;
@@ -25,11 +26,12 @@ public interface I_System {
 
     /** temp method, add param ??? */
     default void utilityBill(BigDecimal replenishAmount){}
-    default void takeOutLoan(){}
-
     /** registration user in system */
     void registration();
     void registrationCard();
     /** authorization user in system */
     User authorization(Account account);
+
+    void takeLoans(String numberCard, Loan loan);
+
 }
