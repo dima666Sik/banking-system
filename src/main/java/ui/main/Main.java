@@ -1,5 +1,6 @@
 package ui.main;
 
+import domain.system.Generator;
 import ui.swing.MainMenuForm;
 
 /**

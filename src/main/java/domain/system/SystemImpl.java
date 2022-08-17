@@ -1,13 +1,7 @@
 package domain.system;
 
-import dao.iface.CardsDAO;
-import dao.iface.MoneyDAO;
-import dao.iface.PhoneDAO;
-import dao.iface.UserDAO;
-import dao.sql.SQLCardsDAO;
-import dao.sql.SQLMoneyDAO;
-import dao.sql.SQLPhoneDAO;
-import dao.sql.SQLUserDAO;
+import dao.iface.*;
+import dao.sql.*;
 import domain.iface.I_System;
 import domain.models.*;
 
@@ -23,6 +17,7 @@ public class SystemImpl implements I_System {
     private PhoneDAO phoneDAO;
     private MoneyDAO moneyDAO;
     private CardsDAO cardsDAO;
+    private LoanDAO loanDAO;
 
     public SystemImpl(User user) {
         this.user = user;
@@ -180,6 +175,25 @@ public class SystemImpl implements I_System {
 
 
     @Override
+    public void takeLoans(String numberCard, Loan loan) {
+        userDAO = new SQLUserDAO();
+        cardsDAO = new SQLCardsDAO();
+        loanDAO = new SQLLoanDAO();
+        moneyDAO = new SQLMoneyDAO();
+
+        Card card = cardsDAO.readCard(numberCard);
+
+        loanDAO.createLoans(loan, user);
+
+        if (card != null) {
+            BigDecimal resRechargeableAmount = card.getMoney().getAmount().
+                    add(loan.getSumLoan());
+            moneyDAO.updateMoney(resRechargeableAmount, card);
+        }
+    }
+
+    @Override
+
     public boolean registration() {
         System.out.println(user);
 

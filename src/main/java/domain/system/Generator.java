@@ -15,7 +15,7 @@ public class Generator {
 
     public static String generateCardEndDataMonth() {
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
-        return currentMonth>9?String.valueOf(currentMonth):"0"+currentMonth;
+        return currentMonth > 9 ? String.valueOf(currentMonth) : "0" + currentMonth;
     }
 
     public static String generateCardEndDataYear() {
@@ -35,5 +35,20 @@ public class Generator {
         return (int) Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+    public static String generateData() {
+        Calendar calendar = Calendar.getInstance();
+        int data = calendar.get(Calendar.DATE);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int year = calendar.get(Calendar.YEAR);
+        return data + ":" + month + ":" + year;
+    }
 
+    public static String generateDataEndLoan(String deadline) {
+        Calendar calendar = Calendar.getInstance();
+        int data = calendar.get(Calendar.DATE);
+        calendar.add(Calendar.MONTH, Integer.parseInt(deadline));
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int year = calendar.get(Calendar.YEAR);
+        return data + ":" + month + ":" + year;
+    }
 }

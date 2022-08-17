@@ -2,6 +2,7 @@ package domain.iface;
 
 import domain.models.Account;
 import domain.models.Card;
+import domain.models.Loan;
 import domain.models.Phone;
 import domain.models.User;
 
@@ -19,9 +20,6 @@ public interface I_System {
     /** replenish somebody a phone amount*/
     boolean replenishPhone(String numberCard, String phone, BigDecimal amount);
 
-    /** temp method, add param ??? */
-    default void utilityBill(BigDecimal replenishAmount){}
-    default void takeOutLoan(){}
     boolean addPhone(String numberPhone);
 
     /** registration user in system */
@@ -29,4 +27,7 @@ public interface I_System {
     boolean registrationCard();
     /** authorization user in system */
     User authorization(Account account);
+
+    void takeLoans(String numberCard, Loan loan);
+
 }

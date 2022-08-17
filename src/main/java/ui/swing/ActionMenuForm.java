@@ -104,6 +104,8 @@ public class ActionMenuForm extends JDialog{
     }
 
     private void opportunityToTakeOut() {
+        dispose();
+        new TakeOutLoanForm(user);
     }
 
     private void withdrawingMoney() {
