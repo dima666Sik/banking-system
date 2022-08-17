@@ -9,7 +9,7 @@
 6. Project uses encryption sh256 for login and password user.
 7. System can be extended.
 8. For testing the system uses JUnit4.
-9. System uses Log4j2.
+9. System uses Log4j.
 
 ## Features
 ☑️Sing in;
