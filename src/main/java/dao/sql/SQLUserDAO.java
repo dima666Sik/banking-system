@@ -4,30 +4,60 @@ import dao.controller.DBConnector;
 import dao.iface.UserDAO;
 import dao.sql.query.QueryUser;
 import domain.models.Account;
-import domain.models.Card;
-import domain.models.Phone;
+
 import domain.models.User;
 
+import javax.swing.*;
 import java.sql.*;
-import java.util.ArrayList;
 
 
 public class SQLUserDAO implements UserDAO {
 
     @Override
-    public void createUser(User user) {
+    public boolean createUser(User user) {
+        boolean flag = true;
+        if (userIsExist(user)) {
+            try (Connection connection = DBConnector.getConnector();
+                 PreparedStatement statement = connection.prepareStatement(QueryUser.createUser());
+            ) {
+                statement.setString(1, user.getFirstName());
+                statement.setString(2, user.getLastName());
+                statement.setString(3, user.getLogin());
+                statement.setString(4, user.getPassword());
+                statement.setInt(5, user.getSex());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else{
+            flag=false;
+            JOptionPane.showMessageDialog(null,
+                    "Such user is defined, please change login...",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return flag;
+    }
+
+    private boolean userIsExist(User user) {
+        boolean flag = true;
+        System.out.println(user.getLogin());
         try (Connection connection = DBConnector.getConnector();
-             PreparedStatement statement = connection.prepareStatement(QueryUser.createUser());
+             PreparedStatement statement = connection.prepareStatement(QueryUser.selectUser());
         ) {
-            statement.setString(1, user.getFirstName());
-            statement.setString(2, user.getLastName());
-            statement.setString(3, user.getLogin());
-            statement.setString(4, user.getPassword());
-            statement.setInt(5, user.getSex());
-            statement.executeUpdate();
+            statement.setString(1, user.getLogin());
+            statement.setString(2, user.getPassword());
+            try (ResultSet resultSet = statement.executeQuery();
+            ) {
+                while (resultSet.next()) {
+                    flag = false;
+                    break;
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return flag;
     }
 
     @Override

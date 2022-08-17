@@ -13,11 +13,13 @@ import ui.swing.MainMenuForm;
  * ❌ Menu acts;
  * ❌ Replenishment of the account on the card;
  * ❌ Withdrawing money from the card;
- * ❌ Create notes;
  * ❌ Opportunity to take out a loan;
  * ❌ Money transfer;
  * ❌ Replenishment of mobile;
- * ❌ Payment of utility services.
+ * ❌ Create new card;
+ * ❌ Add addition phone;
+ * ❌ Check amount on the card;
+ * ❌ Check amount on the phone.
  */
 
 public class Main {

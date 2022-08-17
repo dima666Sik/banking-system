@@ -4,6 +4,7 @@ import domain.iface.I_System;
 import domain.models.Card;
 import domain.models.User;
 import domain.system.SystemImpl;
+import ui.switchbox.SwitchBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,19 +26,6 @@ public class MoneyTransferForm extends JDialog {
     private JTextField textFieldMoney;
     private JTextField textFieldCurrency;
 
-    // update!!!!
-    private ArrayList<Card> setComboBoxList() {
-        I_System i_system = new SystemImpl(user);
-        ArrayList<Card> cards = i_system.returnListCardsUser();
-
-        Iterator<Card> iterator = cards.iterator();
-        comboBoxUserCards.addItem("Your choose");
-        while (iterator.hasNext()) {
-            comboBoxUserCards.addItem(iterator.next().getNumberCard());
-        }
-        return cards;
-    }
-
     public MoneyTransferForm(User user) {
         this.user = user;
         setUndecorated(true);
@@ -48,7 +36,7 @@ public class MoneyTransferForm extends JDialog {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        ArrayList<Card> cards = setComboBoxList();
+        ArrayList<Card> cards = SwitchBox.setComboBoxListCards(user, comboBoxUserCards);
 
         comboBoxUserCards.addActionListener(e -> {
             if (comboBoxUserCards.getSelectedItem() != null) {

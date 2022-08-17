@@ -1,34 +1,26 @@
 package ui.swing;
 
-import domain.iface.I_System;
 import domain.models.Card;
 import domain.models.User;
-import domain.system.SystemImpl;
 import ui.switchbox.SwitchBox;
 
 import javax.swing.*;
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WithdrawingMoneyForm extends JDialog{
-    private User user;
+public class ShowCardForm extends JDialog{
     private JComboBox comboBoxUserCards;
     private JTextField textFieldMoney;
     private JTextField textFieldCurrency;
-    private JTextField textFieldDepositedMoney;
     private JButton backButton;
-    private JButton replenishButton;
-    private JPanel panelWithdrawingMoney;
-    private JComboBox comboBoxDepositedCurrency;
+    private JPanel panelShowCard;
 
-    public WithdrawingMoneyForm(User user) {
-        this.user=user;
+    public ShowCardForm(User user) {
         setUndecorated(true);
-        setContentPane(panelWithdrawingMoney);
-        setMinimumSize(new Dimension(820, 200));
+        setContentPane(panelShowCard);
+        setMinimumSize(new Dimension(720, 200));
 
         setModal(true);
         setLocationRelativeTo(null);
@@ -56,20 +48,7 @@ public class WithdrawingMoneyForm extends JDialog{
             dispose();
             new ActionMenuForm(user);
         });
-
-        replenishButton.addActionListener(e -> {
-            replenish();
-        });
         setVisible(true);
-    }
-
-    private void replenish() {
-        I_System i_system = new SystemImpl(user);
-        boolean flag = i_system.withdrawingMoney((String) comboBoxUserCards.getSelectedItem(),new BigDecimal(textFieldDepositedMoney.getText()));
-        if (flag) {
-            dispose();
-            new ActionMenuForm(user);
-        }
     }
 
 }
