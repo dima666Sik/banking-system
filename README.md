@@ -17,7 +17,7 @@
 <br>☑️Menu acts;
 <br>☑️Replenishment of the account on the card;
 <br>☑️Withdrawing money from the card;
-<br>:x:Opportunity to take out a loan;
+<br>☑️Opportunity to take out a loan;
 <br>☑️Money transfer;
 <br>☑️Replenishment of mobile;
 <br>☑️Create new card;
