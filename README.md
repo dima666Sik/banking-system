@@ -30,7 +30,7 @@ To run this project you will need to install:
 JDK 11 or higher
 MySQL RDBMS
 
-If you have downloaded a project and want to run it with your own database then you have to create enum which will be stored in a package src/guru/work/prog/dataenv and put your environment variables.
+If you have downloaded a project and want to run it with your own database then you have to create enum which will be stored in a package src/main/java/dao/env and put your environment variables.
 ```java
 public enum Environment {
     DB_URL("jdbc:RDBMS//host:port/nameDB"),
