@@ -28,6 +28,6 @@ public interface I_System {
     /** authorization user in system */
     User authorization(Account account);
 
-    void takeLoans(String numberCard);
+    boolean takeLoans(String numberCard);
 
 }

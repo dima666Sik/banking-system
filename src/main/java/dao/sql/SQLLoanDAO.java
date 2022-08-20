@@ -14,8 +14,10 @@ import java.sql.SQLException;
 
 public class SQLLoanDAO implements LoanDAO {
     final static Logger logger = Logger.getLogger(FileReader.class);
+
     @Override
-    public void createLoans(User user) {
+    public boolean createLoans(User user) {
+        boolean flag = true;
         try (Connection connection = DBConnector.getConnector();
              PreparedStatement statement = connection.prepareStatement(QueryLoans.insertLoans());
         ) {
@@ -30,8 +32,10 @@ public class SQLLoanDAO implements LoanDAO {
             statement.executeUpdate();
             logger.info("Create loan was successful");
         } catch (SQLException e) {
+            flag = false;
             logger.error(e);
         }
+        return flag;
     }
 
     @Override

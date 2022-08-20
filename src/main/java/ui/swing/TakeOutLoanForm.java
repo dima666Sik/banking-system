@@ -32,7 +32,7 @@ public class TakeOutLoanForm extends JDialog {
         this.user = user;
         setUndecorated(true);
         setContentPane(panelTakeALoan);
-        setMinimumSize(new Dimension(600, 500));
+        setMinimumSize(new Dimension(690, 400));
 
         setModal(true);
         setLocationRelativeTo(null);
@@ -53,28 +53,23 @@ public class TakeOutLoanForm extends JDialog {
         });
 
         calcButton.addActionListener(e -> {
-            if (!textFieldSum.getText().isEmpty() && !(comboBoxPercent.getSelectedItem()).equals("0")) {
-                if(checkStringForNumber(textFieldSum.getText()))
+            if (checkStringForNumber(textFieldSum.getText()))
                 textFieldAmountWithPercent.setText(amountWithPercent(textFieldSum.getText(), (String) comboBoxPercent.getSelectedItem()));
-            }
         });
         backButton.addActionListener(e -> {
             dispose();
             new ActionMenuForm(user);
         });
         takeButton.addActionListener(e -> {
-            if(checkStringForNumber(textFieldSum.getText()))
-            credit();
+            if (checkStringForNumber(textFieldSum.getText()))
+                credit();
         });
 
         setVisible(true);
     }
 
     private void credit() {
-        if (!textFieldSum.getText().isEmpty() &&
-                !(comboBoxPercent.getSelectedItem()).equals("0") &&
-                !(comboBoxDeadline.getSelectedItem()).equals("0")
-        ) {
+        if (!textFieldSum.getText().isEmpty()) {
             Loan loan = new Loan(new BigDecimal(textFieldSum.getText()),
                     new BigDecimal(amountWithPercent(textFieldSum.getText(), (String) comboBoxPercent.getSelectedItem())),
                     comboBoxPercent.getSelectedItem().toString(),
@@ -82,8 +77,10 @@ public class TakeOutLoanForm extends JDialog {
                     textFieldCurrency.getText());
             user.setLoan(loan);
             I_System i_system = new SystemImpl(user);
-            i_system.takeLoans((String) comboBoxUserCards.getSelectedItem());
-
+            if(i_system.takeLoans((String) comboBoxUserCards.getSelectedItem())){
+                dispose();
+                new ActionMenuForm(user);
+            }
         }
     }
 
