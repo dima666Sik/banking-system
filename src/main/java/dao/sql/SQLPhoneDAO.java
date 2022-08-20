@@ -4,8 +4,10 @@ import dao.controller.DBConnector;
 import dao.iface.PhoneDAO;
 import dao.sql.query.QueryPhone;
 import domain.models.*;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 public class SQLPhoneDAO implements PhoneDAO {
     private final SQLMoneyDAO moneyDAO = new SQLMoneyDAO();
+    final static Logger logger = Logger.getLogger(FileReader.class);
 
     @Override
     public boolean createPhone(User user) {
@@ -26,8 +29,9 @@ public class SQLPhoneDAO implements PhoneDAO {
                 statement.setString(1, user.getPhone().getPhoneNumber());
                 statement.setInt(2, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
                 statement.executeUpdate();
+                logger.info("Create phone was successful!");
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.error(e);
             }
         } else {
             flag = false;
@@ -54,9 +58,10 @@ public class SQLPhoneDAO implements PhoneDAO {
                             moneyDAO.readMoneyFromPhone(idPhone)
                     );
                 }
+                logger.info("Read phone was successful!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return phone;
     }
@@ -87,9 +92,10 @@ public class SQLPhoneDAO implements PhoneDAO {
                     ));
 
                 }
+                logger.info("Read phones was successful!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return phones;
     }

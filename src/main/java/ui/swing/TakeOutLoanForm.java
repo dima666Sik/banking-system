@@ -5,6 +5,7 @@ import domain.models.Card;
 import domain.models.Loan;
 import domain.models.User;
 import domain.system.SystemImpl;
+import ui.switchbox.SwitchBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +38,7 @@ public class TakeOutLoanForm extends JDialog {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        ArrayList<Card> cards = setComboBoxList();
+        ArrayList<Card> cards = SwitchBox.setComboBoxListCards(user, comboBoxUserCards);
         comboBoxUserCards.addActionListener(e -> {
             if (comboBoxUserCards.getSelectedItem() != null) {
                 List<Card> cardList = cards.stream().
@@ -53,6 +54,7 @@ public class TakeOutLoanForm extends JDialog {
 
         calcButton.addActionListener(e -> {
             if (!textFieldSum.getText().isEmpty() && !(comboBoxPercent.getSelectedItem()).equals("0")) {
+                if(checkStringForNumber(textFieldSum.getText()))
                 textFieldAmountWithPercent.setText(amountWithPercent(textFieldSum.getText(), (String) comboBoxPercent.getSelectedItem()));
             }
         });
@@ -61,13 +63,14 @@ public class TakeOutLoanForm extends JDialog {
             new ActionMenuForm(user);
         });
         takeButton.addActionListener(e -> {
+            if(checkStringForNumber(textFieldSum.getText()))
             credit();
         });
 
         setVisible(true);
     }
 
-    public void credit() {
+    private void credit() {
         if (!textFieldSum.getText().isEmpty() &&
                 !(comboBoxPercent.getSelectedItem()).equals("0") &&
                 !(comboBoxDeadline.getSelectedItem()).equals("0")
@@ -77,27 +80,27 @@ public class TakeOutLoanForm extends JDialog {
                     comboBoxPercent.getSelectedItem().toString(),
                     comboBoxDeadline.getSelectedItem().toString(),
                     textFieldCurrency.getText());
-            System.out.println(loan);
+            user.setLoan(loan);
             I_System i_system = new SystemImpl(user);
-            i_system.takeLoans((String) comboBoxUserCards.getSelectedItem(), loan);
+            i_system.takeLoans((String) comboBoxUserCards.getSelectedItem());
 
         }
     }
 
-    public String amountWithPercent(String sum, String percent) {
+    private String amountWithPercent(String sum, String percent) {
         return String.valueOf(Double.parseDouble(sum) + (Double.parseDouble(sum) * Double.parseDouble(percent)) / 100);
     }
 
-    private ArrayList<Card> setComboBoxList() {
-        I_System i_system = new SystemImpl(user);
-        ArrayList<Card> cards = i_system.returnListCardsUser();
-
-        Iterator<Card> iterator = cards.iterator();
-        comboBoxUserCards.addItem("Your choose");
-        while (iterator.hasNext()) {
-            comboBoxUserCards.addItem(iterator.next().getNumberCard());
+    private boolean checkStringForNumber(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                    "You enter string not number!",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        return cards;
     }
-
 }

@@ -6,12 +6,15 @@ import dao.sql.query.QueryUser;
 import domain.models.Account;
 
 import domain.models.User;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
+import java.io.FileReader;
 import java.sql.*;
 
 
 public class SQLUserDAO implements UserDAO {
+    final static Logger logger = Logger.getLogger(FileReader.class);
 
     @Override
     public boolean createUser(User user) {
@@ -26,8 +29,9 @@ public class SQLUserDAO implements UserDAO {
                 statement.setString(4, user.getPassword());
                 statement.setInt(5, user.getSex());
                 statement.executeUpdate();
+                logger.info("Create user was successful!");
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e);
             }
         }else{
             flag=false;
@@ -53,9 +57,10 @@ public class SQLUserDAO implements UserDAO {
                     flag = false;
                     break;
                 }
+                logger.info("Check user exist was successful!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return flag;
     }
@@ -83,9 +88,10 @@ public class SQLUserDAO implements UserDAO {
                             last_name,
                             sex);
                 }
+                logger.info("Read user was successful!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return user;
     }

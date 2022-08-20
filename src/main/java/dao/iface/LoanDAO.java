@@ -4,7 +4,7 @@ import domain.models.Loan;
 import domain.models.User;
 
 public interface LoanDAO {
-    void createLoans(Loan loan, User user);
+    void createLoans(User user);
 
     void readLoans();
 

@@ -11,13 +11,14 @@ public class QueryLoans {
                 "   currency_loan varchar(10),\n" +
                 "   start_loan varchar(10),\n" +
                 "   end_loan varchar(10),\n" +
+                "   id_user bigint(10) unsigned,\n" +
                 "   PRIMARY KEY(id_loan),\n" +
                 "   FOREIGN KEY (id_user)  REFERENCES users (id_user) on DELETE CASCADE on UPDATE CASCADE\n" +
                 ");";
     }
 
     public static String insertLoans() {
-        return "insert into loan (sum_loan, remained_loan, percent_loan, deadline_loan, currency_loan, start_loan, end_loan, id_user) values(?,?,?,?,?,?,?,?);";
+        return "insert into loan (sum_loan, remained, percent_loan, deadline_loan, currency_loan, start_loan, end_loan, id_user) values(?,?,?,?,?,?,?,?);";
     }
 
     public static String selectLoans() {

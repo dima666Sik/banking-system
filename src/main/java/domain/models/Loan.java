@@ -5,13 +5,13 @@ import domain.system.Generator;
 import java.math.BigDecimal;
 
 public class Loan {
-    private BigDecimal sumLoan;
-    private BigDecimal remainedLoan;
-    private String percentLoan;
-    private String deadlineLoan;
-    private String currencyLoan;
-    private String startLoan;
-    private String endLoan;
+    private final BigDecimal sumLoan;
+    private final BigDecimal remainedLoan;
+    private final String percentLoan;
+    private final String deadlineLoan;
+    private final String currencyLoan;
+    private final String startLoan;
+    private final String endLoan;
 
     public Loan(BigDecimal sumLoan, BigDecimal remainedLoan, String percentLoan, String deadlineLoan, String currencyLoan) {
         this.sumLoan = sumLoan;
@@ -19,8 +19,8 @@ public class Loan {
         this.percentLoan = percentLoan;
         this.deadlineLoan = deadlineLoan;
         this.currencyLoan = currencyLoan;
-        this.startLoan = Generator.generateData();
-        this.endLoan = Generator.generateDataEndLoan(deadlineLoan);
+        this.startLoan = Generator.generateData(0);
+        this.endLoan = Generator.generateData(Integer.parseInt(deadlineLoan));
     }
 
     public BigDecimal getSumLoan() {

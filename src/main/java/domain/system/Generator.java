@@ -35,18 +35,10 @@ public class Generator {
         return (int) Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    public static String generateData() {
+    public static String generateData(int deadline) {
         Calendar calendar = Calendar.getInstance();
         int data = calendar.get(Calendar.DATE);
-        int month = calendar.get(Calendar.MONTH) + 1;
-        int year = calendar.get(Calendar.YEAR);
-        return data + ":" + month + ":" + year;
-    }
-
-    public static String generateDataEndLoan(String deadline) {
-        Calendar calendar = Calendar.getInstance();
-        int data = calendar.get(Calendar.DATE);
-        calendar.add(Calendar.MONTH, Integer.parseInt(deadline));
+        calendar.add(Calendar.MONTH, deadline);
         int month = calendar.get(Calendar.MONTH) + 1;
         int year = calendar.get(Calendar.YEAR);
         return data + ":" + month + ":" + year;

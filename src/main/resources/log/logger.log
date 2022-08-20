@@ -1,0 +1,26 @@
+2022-08-20 18:20:30 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:20:30 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Check user exist was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Create user was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Read phone was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Create phone was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Check id phone exist successful
+2022-08-20 18:22:33 INFO  [AWT-EventQueue-0]: Create money for phone was successful!
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Check card exist successful
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Create card was successful!
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Check id card exist successful
+2022-08-20 18:23:21 INFO  [AWT-EventQueue-0]: Create money for card was successful!

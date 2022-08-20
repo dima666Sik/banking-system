@@ -7,13 +7,17 @@ import dao.sql.query.QueryUser;
 import domain.models.Account;
 import domain.models.Card;
 import domain.models.Phone;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class SQLCheckID {
+
+    final static Logger logger = Logger.getLogger(FileReader.class);
 
     public static int checkIdUser(Account account){
         int id = 0;
@@ -30,9 +34,10 @@ public class SQLCheckID {
                         "First part registration user is fault... (user not found)",
                         "Try again",
                         JOptionPane.ERROR_MESSAGE);
+                logger.info("Check id user exist successful");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return id;
     }
@@ -51,9 +56,10 @@ public class SQLCheckID {
                         "Phone not found.",
                         "Try again",
                         JOptionPane.ERROR_MESSAGE);
+                logger.info("Check id phone exist successful");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return id;
     }
@@ -72,9 +78,10 @@ public class SQLCheckID {
                         "Card not found.",
                         "Try again",
                         JOptionPane.ERROR_MESSAGE);
+                logger.info("Check id card exist successful");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return id;
     }

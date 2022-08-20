@@ -175,7 +175,7 @@ public class SystemImpl implements I_System {
 
 
     @Override
-    public void takeLoans(String numberCard, Loan loan) {
+    public void takeLoans(String numberCard) {
         userDAO = new SQLUserDAO();
         cardsDAO = new SQLCardsDAO();
         loanDAO = new SQLLoanDAO();
@@ -183,11 +183,11 @@ public class SystemImpl implements I_System {
 
         Card card = cardsDAO.readCard(numberCard);
 
-        loanDAO.createLoans(loan, user);
+        loanDAO.createLoans(user);
 
         if (card != null) {
             BigDecimal resRechargeableAmount = card.getMoney().getAmount().
-                    add(loan.getSumLoan());
+                    add(user.getLoan().getSumLoan());
             moneyDAO.updateMoney(resRechargeableAmount, card);
         }
     }

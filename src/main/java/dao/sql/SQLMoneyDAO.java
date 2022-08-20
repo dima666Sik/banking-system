@@ -7,7 +7,9 @@ import domain.models.Card;
 import domain.models.Money;
 import domain.models.Phone;
 import domain.models.User;
+import org.apache.log4j.Logger;
 
+import java.io.FileReader;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +18,8 @@ import java.sql.SQLException;
 import java.util.Currency;
 
 public class SQLMoneyDAO implements MoneyDAO {
+    final static Logger logger = Logger.getLogger(FileReader.class);
+
     @Override
     public void createMoneyForPhone(User user) {
         try (Connection connection = DBConnector.getConnector();
@@ -25,8 +29,9 @@ public class SQLMoneyDAO implements MoneyDAO {
             statement.setString(2, String.valueOf(user.getPhone().getMoney().getCurrency()));
             statement.setInt(3, SQLCheckID.checkIdPhone(user.getPhone()));
             statement.executeUpdate();
+            logger.info("Create money for phone was successful!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -39,8 +44,9 @@ public class SQLMoneyDAO implements MoneyDAO {
             statement.setString(2, String.valueOf(user.getCard().getMoney().getCurrency()));
             statement.setInt(3, SQLCheckID.checkIdCard(user.getCard()));
             statement.executeUpdate();
+            logger.info("Create money for card was successful!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -57,9 +63,10 @@ public class SQLMoneyDAO implements MoneyDAO {
                     money = new Money(resultSet.getBigDecimal("amount_card"),
                             Currency.getInstance(resultSet.getString("currency_card")));
                 }
+                logger.info("Read money from phone was successful!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return money;
     }
@@ -77,9 +84,10 @@ public class SQLMoneyDAO implements MoneyDAO {
                     money = new Money(resultSet.getBigDecimal("amount_phone"),
                             Currency.getInstance(resultSet.getString("currency_phone")));
                 }
+                logger.info("Read money from card was successful!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return money;
     }
@@ -92,8 +100,9 @@ public class SQLMoneyDAO implements MoneyDAO {
             statement.setBigDecimal(1, replenishAmount);
             statement.setInt(2, SQLCheckID.checkIdCard(card));
             statement.executeUpdate();
+            logger.info("Update money for card was successful!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -105,8 +114,9 @@ public class SQLMoneyDAO implements MoneyDAO {
             statement.setBigDecimal(1, replenishAmount);
             statement.setInt(2, SQLCheckID.checkIdPhone(phone));
             statement.executeUpdate();
+            logger.info("Update money for phone was successful!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 

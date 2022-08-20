@@ -8,8 +8,10 @@ import domain.models.Account;
 import domain.models.Card;
 import domain.models.Money;
 import domain.models.User;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 
 public class SQLCardsDAO implements CardsDAO {
     private final SQLMoneyDAO moneyDAO = new SQLMoneyDAO();
+    final static Logger logger = Logger.getLogger(FileReader.class);
 
     @Override
     public boolean createCard(User user) {
@@ -32,8 +35,9 @@ public class SQLCardsDAO implements CardsDAO {
                 statement.setString(4, user.getCard().getCVC2());
                 statement.setInt(5, SQLCheckID.checkIdUser(new Account(user.getLogin(), user.getPassword())));
                 statement.executeUpdate();
+                logger.info("Create card was successful!");
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.error(e);
             }
         } else {
             flag = false;
@@ -58,9 +62,10 @@ public class SQLCardsDAO implements CardsDAO {
                     flag = false;
                     break;
                 }
+                logger.info("Check card exist successful");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return flag;
     }
@@ -83,9 +88,10 @@ public class SQLCardsDAO implements CardsDAO {
                             moneyDAO.readMoneyFromCard(idCard)
                     );
                 }
+                logger.info("Read card was successful");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return card;
     }
@@ -109,9 +115,10 @@ public class SQLCardsDAO implements CardsDAO {
                     ));
 
                 }
+                logger.info("Read cards was successful");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return cards;
     }

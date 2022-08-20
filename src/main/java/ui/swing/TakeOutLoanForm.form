@@ -3,9 +3,11 @@
   <grid id="27dc6" binding="panelTakeALoan" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="553" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-12434105"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="f7448" class="javax.swing.JLabel">
@@ -14,7 +16,8 @@
         </constraints>
         <properties>
           <enabled value="true"/>
-          <font size="28" style="0"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Take a loan"/>
         </properties>
       </component>
@@ -23,6 +26,8 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Choose youself card:"/>
         </properties>
       </component>
@@ -32,7 +37,11 @@
             <preferred-size width="118" height="30"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-12434105"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
+        </properties>
       </component>
       <component id="62543" class="javax.swing.JTextField" binding="textFieldCurrency">
         <constraints>
@@ -40,13 +49,19 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-12434105"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
+        </properties>
       </component>
       <component id="11501" class="javax.swing.JLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Choose sum"/>
         </properties>
       </component>
@@ -55,6 +70,8 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Choose %"/>
         </properties>
       </component>
@@ -63,6 +80,8 @@
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Choose deadline"/>
         </properties>
       </component>
@@ -73,6 +92,9 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-12434105"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value=""/>
         </properties>
       </component>
@@ -83,6 +105,8 @@
           </grid>
         </constraints>
         <properties>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Back"/>
         </properties>
       </component>
@@ -92,13 +116,19 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-12434105"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
+        </properties>
       </component>
       <component id="ef4a8" class="javax.swing.JLabel">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Amount with percent"/>
         </properties>
       </component>
@@ -107,6 +137,9 @@
           <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-12434105"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <model>
             <item value="0"/>
             <item value="6"/>
@@ -121,7 +154,10 @@
           <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-12434105"/>
           <editable value="false"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <model>
             <item value="0"/>
             <item value="5"/>
@@ -137,6 +173,9 @@
         </constraints>
         <properties>
           <actionCommand value="Calc"/>
+          <background color="-12434105"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Calc"/>
         </properties>
       </component>
@@ -145,6 +184,9 @@
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-12434105"/>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Currency"/>
         </properties>
       </component>
@@ -153,6 +195,8 @@
           <grid row="6" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Algerian" size="14" style="0"/>
+          <foreground color="-723724"/>
           <text value="Take"/>
         </properties>
       </component>

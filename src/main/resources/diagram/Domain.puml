@@ -6,22 +6,19 @@ package "models" #557895 {
   Card o-- Money
   Money o-- Currency
   Phone o-- Money
-  Group o-- Group
-  Group o-- Utility
-  Utility o-- Gas
-  Utility o-- TV
-  Utility o-- Internet
-  Utility o-- Water
   Account <|-- User
+  User o-- Loan
 }
 
 package "system" #715426 {
-      System ..> Group
-      System o-- User
+      SystemImpl o-- User
+      Account <-- Encryption
+      User <-- Generator
+      Loan <-- Generator
 }
 
 package "iface" #799986 {
-    I_System <|.. System
+    I_System <|.. SystemImpl
 }
 
 package "ui" #999999{
@@ -32,31 +29,29 @@ package "ui" #999999{
 }
 
 interface I_System {
-    +void replenishOnTheCard(BigDecimal replenishAmount)
-    +void replenishOnTheCard(BigDecimal replenishAmount, long rechargeableCard)
-    +void withdrawingMoney(BigDecimal withdrawingAmount)
-    +void replenishPhone(BigDecimal replenishAmount)
-    +void replenishPhone(BigDecimal replenishAmount, long numberPhone)
-    .. we must think about param in this methods..
-    +void utilityBill(BigDecimal replenishAmount)
-    +void takeOutLoan()
-    +void registration();
-    +void authorization();
+    +boolean replenishOnTheCard(String ownCard,BigDecimal replenishAmount);
+    +boolean replenishOnTheCard(String ownCard, String rechargeableCard, BigDecimal replenishAmount);
+    +ArrayList<Card> returnListCardsUser();
+    +ArrayList<Phone> returnListPhoneUser();
+    +boolean withdrawingMoney(String ownCard, BigDecimal withdrawingAmount);
+    +boolean replenishPhone(String numberCard, String phone, BigDecimal amount);
+    +boolean addPhone(String numberPhone);
+    +boolean registration();
+    +boolean registrationCard();
+    +User authorization(Account account);
+    +void takeLoans(String numberCard);
 }
+
 class Main {
     + {static} void main(String[] args)
 }
-class Card {
-    - long numberCard;
-    - int cardEndDataMonth;
-    - int cardEndDataYear;
-    - int CVC2;
-    - Money money;
-}
 
-class Group {
-    - ArrayList<Group> groupArrayList;
-    - ArrayList<Utility> utilityArrayList;
+class Card {
+    -String numberCard;
+    -String cardEndDataMonth;
+    -String cardEndDataYear;
+    -String CVC2;
+    -Money money;
 }
 
 class Money {
@@ -66,33 +61,45 @@ class Money {
 
 class Phone {
     - String phoneNumber;
-    - Money moneyOnThePhone;
+    - Money money;
 }
 
 class User {
     - String firstName;
     - String lastName;
-    - int sex;
-    - char[] login;
-    - char[] password;
-    - ArrayList<Card> cardArrayList;
-    - Phone phone;
-    - String role;
 }
 
-class Utility {
-     - Gas gas;
-     - TV tv;
-     - Internet internet;
-     - Water water;
-}
 
-class System{
-    User user;
+class SystemImpl{
+
 }
 
 class Account {
-    - char[] login;
-    - char[] password;
+    - String login;
+    - String password;
+}
+
+class Loan {
+    - BigDecimal sumLoan;
+    - BigDecimal remainedLoan;
+    - String percentLoan;
+    - String deadlineLoan;
+    - String currencyLoan;
+    - String startLoan;
+    - String endLoan;
+}
+
+class Encryption{
++ {static} StringBuilder encryptionSHA256(char[] password);
+- {static} byte[] toBytes(char[] chars);
+}
+
+class Generator{
+    + {static} String generateNumberCard();
+    + {static} String generateCardEndDataMonth();
+    + {static} String generateCardEndDataYear();
+    + {static} String generateCVC2();
+    + {static} String generateData(int deadline);
+    - {static} int generateRandomize(int min, int max);
 }
 @enduml
