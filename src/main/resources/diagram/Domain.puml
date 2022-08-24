@@ -12,9 +12,9 @@ package "models" #557895 {
 
 package "system" #715426 {
       SystemImpl o-- User
-      Account <-- Encryption
-      User <-- Generator
-      Loan <-- Generator
+      Encryption <-- Account
+      Generator <-- User
+      Generator <-- Loan
 }
 
 package "iface" #799986 {
