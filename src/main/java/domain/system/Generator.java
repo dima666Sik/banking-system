@@ -1,7 +1,11 @@
 package domain.system;
 
+import domain.env.Currency;
+import domain.exceptions.DomainException;
 import domain.models.Card;
+import domain.models.Money;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 public class Generator {
@@ -42,5 +46,23 @@ public class Generator {
         int month = calendar.get(Calendar.MONTH) + 1;
         int year = calendar.get(Calendar.YEAR);
         return data + ":" + month + ":" + year;
+    }
+
+    /**
+     * Default currency is - USD,
+     * param: currency what we want to get, and current money
+     *
+     * @return BigDecimal
+     */
+    public static BigDecimal generateCurrencyAmount(Money money, String currency) throws DomainException {
+        if (currency.equals(Currency.USD.getCurrency())) {
+            return money.getAmount();
+        } else if (currency.equals(Currency.UAH.getCurrency())) {
+            return money.getAmount().multiply(new BigDecimal("36.71"));
+        } else if (currency.equals(Currency.EUR.getCurrency())) {
+            return money.getAmount().multiply(new BigDecimal("0.98"));
+        } else {
+            throw new DomainException("Currency is not exist in this system");
+        }
     }
 }

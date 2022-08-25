@@ -2,6 +2,7 @@ package ui.swing;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Currency;
 
 public class MainMenuForm extends JDialog{
 

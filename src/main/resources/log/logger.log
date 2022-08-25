@@ -284,3 +284,127 @@
 2022-08-20 22:22:04 INFO  [AWT-EventQueue-0]: Connect to database was successful!
 2022-08-20 22:22:04 INFO  [AWT-EventQueue-0]: Read money from card was successful!
 2022-08-20 22:22:04 INFO  [AWT-EventQueue-0]: Read phones was successful!
+2022-08-25 14:00:02 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:02 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:00:14 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:14 INFO  [AWT-EventQueue-0]: Check user exist was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Create user was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Read phone was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Create phone was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Check id phone exist successful
+2022-08-25 14:00:15 INFO  [AWT-EventQueue-0]: Create money for phone was successful!
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Check card exist successful
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Create card was successful!
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Check id card exist successful
+2022-08-25 14:00:16 INFO  [AWT-EventQueue-0]: Create money for card was successful!
+2022-08-25 14:00:18 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:18 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:18 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:00:18 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:00:18 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:00:18 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:09:40 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:09:40 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:09:41 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:09:41 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:09:41 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:09:41 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:09:41 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:09:41 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:10:53 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:10:53 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:10:54 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:10:54 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:10:54 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:10:54 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:10:54 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:10:54 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:11:54 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:11:54 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:11:55 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:11:55 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:11:55 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:11:55 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:11:55 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:11:55 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:12:10 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:10 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:12:11 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:11 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:11 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:12:11 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:11 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:12:11 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:12:51 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:51 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:12:52 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:52 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:52 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:12:52 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:12:52 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:12:52 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:14:03 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:14:31 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:31 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:14:32 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:32 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:32 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:14:32 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:14:32 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:14:32 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:16:35 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:16:35 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:16:36 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:16:36 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:16:36 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:16:36 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:16:36 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:16:36 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:22:53 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:22:54 INFO  [AWT-EventQueue-0]: Read user was successful!
+2022-08-25 14:22:54 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:22:54 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:22:54 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:22:54 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:22:54 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:22:54 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:23:05 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:05 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:05 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:23:05 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:05 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:23:05 INFO  [AWT-EventQueue-0]: Read cards was successful
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Read card was successful
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Check id card exist successful
+2022-08-25 14:23:11 INFO  [AWT-EventQueue-0]: Update money for card was successful!
+2022-08-25 14:23:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:15 INFO  [AWT-EventQueue-0]: Check id user exist successful
+2022-08-25 14:23:15 INFO  [AWT-EventQueue-0]: Connect to database was successful!
+2022-08-25 14:23:15 INFO  [AWT-EventQueue-0]: Read money from phone was successful!
+2022-08-25 14:23:15 INFO  [AWT-EventQueue-0]: Read cards was successful

@@ -4,11 +4,12 @@
 1. This project uses jdk 11, JDBC driver, MySQL, Swing;
 2. Project consists of 3 levels such as: ui, domain, dao;
 3. Project uses `Swing` interface;
-4. Project uses db `MySQL` to store information.
-5. Project uses `encryption sh256` for login and password user.
-6. System can be extended.
-7. For testing the system uses `JUnit4`.
-8. System uses `Log4j`.
+4. Project uses db `MySQL` to store information;
+5. Project uses `encryption sh256` for login and password user;
+6. System can be extended;
+7. For testing the system uses `JUnit4`;
+8. System uses `Log4j`;
+9. User can view a bank card in the system and see what is on it in different currencies, from USD to EUR. (Check it in `Check amount on the card`)
 
 ## Features
 ☑️Sing in;
